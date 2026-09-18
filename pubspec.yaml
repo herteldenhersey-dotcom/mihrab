@@ -24,7 +24,11 @@ dependencies:
 
   # Location
   geolocator: ^13.0.1
-  geocoding: ^3.0.0
+  # 3.x's geocoding_android compiled against android-33, whose transitive
+  # AndroidX deps now require compileSdk >= 34 — breaks the build on the current
+  # toolchain. 5.x compiles against a newer SDK. Only placemarkFromCoordinates /
+  # Placemark are used, and those are unchanged across the upgrade.
+  geocoding: ^5.0.0
 
   # Compass / Qibla
   flutter_compass: ^0.8.0
@@ -32,7 +36,11 @@ dependencies:
   # Notifications
   flutter_local_notifications: ^18.0.1
   timezone: ^0.9.4
-  workmanager: ^0.5.2
+  # NOTE: 0.5.2 used Flutter's removed v1 Android embedding (ShimPluginRegistry
+  # / registerWith), which no longer compiles on the current engine. Bumped to a
+  # v2-embedding-compatible release. No Dart code uses its API yet (the periodic
+  # worker is wired in a later phase), so this is a pure build-compat fix.
+  workmanager: ^0.10.10
 
   # Maps / Mosque search (OpenStreetMap)
   flutter_map: ^7.0.2

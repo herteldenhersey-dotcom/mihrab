@@ -50,7 +50,10 @@ class GeolocatorLocationRepository implements LocationRepository {
   @override
   Future<AppLocation> reverseGeocode(double latitude, double longitude) async {
     try {
-      final placemarks = await geo.placemarkFromCoordinates(latitude, longitude);
+      // geocoding 5.x exposes these via a Geocoding instance (was a top-level
+      // function in 3.x).
+      final placemarks =
+          await geo.Geocoding().placemarkFromCoordinates(latitude, longitude);
       if (placemarks.isEmpty) {
         return AppLocation(latitude: latitude, longitude: longitude);
       }
