@@ -25,6 +25,7 @@
   "onboardingWelcomeTitle": "مرحبًا بك في المحراب",
   "onboardingWelcomeBody": "رفيقك للصلاة والعبادة دون اتصال.",
   "onboardingLanguageTitle": "اختر لغتك",
+  "onboardingLanguageSubtitle": "يمكنك تغيير لغة التطبيق في أي وقت من الإعدادات.",
   "onboardingLocationTitle": "إذن الموقع",
   "onboardingLocationBody": "نستخدم موقعك لحساب أوقات الصلاة الدقيقة والعثور على المساجد القريبة.",
   "onboardingNotificationTitle": "إشعارات الصلاة",

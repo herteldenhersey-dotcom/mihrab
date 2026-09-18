@@ -4,6 +4,7 @@ import '../../core/constants/app_constants.dart';
 import '../../core/errors/exceptions.dart';
 import '../../core/errors/failures.dart';
 import '../../domain/enums/feedback_category.dart';
+import '../../domain/enums/feedback_delivery_status.dart';
 import '../../domain/models/feedback_model.dart';
 import '../../domain/repositories/feedback_repository.dart';
 import '../datasources/local/hive_feedback_local.dart';
@@ -36,26 +37,33 @@ class LocalFeedbackRepository implements FeedbackRepository {
 
   @override
   Future<FeedbackItem> submit(FeedbackItem item) async {
+    // Persist first so nothing is lost even if the handoff fails.
+    final pending = item.deliveryStatus == FeedbackDeliveryStatus.pending
+        ? item
+        : item.copyWith(deliveryStatus: FeedbackDeliveryStatus.pending);
     try {
-      await _local.save(item);
+      await _local.save(pending);
     } catch (e) {
       throw mapExceptionToFailure(CacheException('Feedback kaydedilemedi',
           cause: e));
     }
 
-    var submitted = false;
+    // Attempt the mailto handoff. IMPORTANT: launching the mail client only
+    // proves the intent opened — NOT that the mail was actually sent. So the
+    // best we can honestly record in V1 is `handoffInitiated`.
+    var status = FeedbackDeliveryStatus.failed;
     try {
-      final uri = _buildMailto(item);
-      submitted = await launcher(uri);
-      if (submitted) {
-        await _local.markSubmitted(item.id);
-      }
+      final launched = await launcher(_buildMailto(pending));
+      status = launched
+          ? FeedbackDeliveryStatus.handoffInitiated
+          : FeedbackDeliveryStatus.failed;
     } catch (_) {
       // Delivery failed; item stays queued for a later flush. Not fatal.
-      submitted = false;
+      status = FeedbackDeliveryStatus.failed;
     }
 
-    return item.copyWith(submitted: submitted);
+    await _local.updateStatus(pending.id, status);
+    return pending.copyWith(deliveryStatus: status);
   }
 
   @override
@@ -63,10 +71,13 @@ class LocalFeedbackRepository implements FeedbackRepository {
 
   @override
   Future<void> flushQueue() async {
-    for (final item in _local.getUnsubmitted()) {
+    for (final item in _local.getQueued()) {
       try {
         final ok = await launcher(_buildMailto(item));
-        if (ok) await _local.markSubmitted(item.id);
+        if (ok) {
+          await _local.updateStatus(
+              item.id, FeedbackDeliveryStatus.handoffInitiated);
+        }
       } catch (_) {
         // keep queued
       }

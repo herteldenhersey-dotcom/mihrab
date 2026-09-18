@@ -25,6 +25,7 @@
   "onboardingWelcomeTitle": "Welcome to MİHRAB",
   "onboardingWelcomeBody": "Your offline prayer & worship companion.",
   "onboardingLanguageTitle": "Choose your language",
+  "onboardingLanguageSubtitle": "You can change the app language anytime from Settings.",
   "onboardingLocationTitle": "Location permission",
   "onboardingLocationBody": "We use your location to calculate accurate prayer times and find nearby mosques.",
   "onboardingNotificationTitle": "Prayer notifications",

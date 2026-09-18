@@ -38,6 +38,13 @@ class HiveSettingsRepository implements SettingsRepository {
       LanguageCode.fromCode(_prefs.getString(_kLang) ?? 'tr');
 
   @override
+  Future<LanguageCode?> getStoredLanguage() async {
+    final code = _prefs.getString(_kLang);
+    if (code == null || code.isEmpty) return null;
+    return LanguageCode.fromCode(code);
+  }
+
+  @override
   Future<void> saveLanguage(LanguageCode language) =>
       _prefs.setString(_kLang, language.code);
 

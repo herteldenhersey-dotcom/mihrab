@@ -25,6 +25,7 @@
   "onboardingWelcomeTitle": "MİHRAB'a Hoş Geldiniz",
   "onboardingWelcomeBody": "Çevrimdışı namaz ve ibadet arkadaşınız.",
   "onboardingLanguageTitle": "Dilinizi seçin",
+  "onboardingLanguageSubtitle": "Uygulama dilini istediğiniz zaman Ayarlar'dan değiştirebilirsiniz.",
   "onboardingLocationTitle": "Konum izni",
   "onboardingLocationBody": "Doğru namaz vakitlerini hesaplamak ve yakındaki camileri bulmak için konumunuzu kullanırız.",
   "onboardingNotificationTitle": "Namaz bildirimleri",

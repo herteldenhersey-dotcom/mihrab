@@ -71,6 +71,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get onboardingLanguageTitle => 'Dilinizi seçin';
 
   @override
+  String get onboardingLanguageSubtitle =>
+      'Uygulama dilini istediğiniz zaman Ayarlar\'dan değiştirebilirsiniz.';
+
+  @override
   String get onboardingLocationTitle => 'Konum izni';
 
   @override

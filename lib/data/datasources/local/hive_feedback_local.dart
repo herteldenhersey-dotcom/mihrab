@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 
+import '../../../domain/enums/feedback_delivery_status.dart';
 import '../../../domain/models/feedback_model.dart';
 import 'hive_boxes.dart';
 
@@ -15,13 +16,15 @@ class HiveFeedbackLocal {
     return items;
   }
 
-  List<FeedbackItem> getUnsubmitted() =>
-      _box.values.where((f) => !f.submitted).toList();
+  /// Items that have NOT yet been handed off (still queued for delivery).
+  List<FeedbackItem> getQueued() =>
+      _box.values.where((f) => !f.deliveryStatus.isHandedOff).toList();
 
-  Future<void> markSubmitted(String id) async {
+  /// Updates the delivery status of the item with [id].
+  Future<void> updateStatus(String id, FeedbackDeliveryStatus status) async {
     final item = _box.get(id);
     if (item != null) {
-      await _box.put(id, item.copyWith(submitted: true));
+      await _box.put(id, item.copyWith(deliveryStatus: status));
     }
   }
 }

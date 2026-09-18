@@ -37,6 +37,7 @@ import 'domain/usecases/get_prayer_times_usecase.dart';
 import 'domain/usecases/get_qibla_direction_usecase.dart';
 import 'domain/usecases/schedule_notifications_usecase.dart';
 import 'domain/usecases/submit_feedback_usecase.dart';
+import 'localization/cubit/locale_cubit.dart';
 
 /// Global service locator.
 final GetIt getIt = GetIt.instance;
@@ -113,6 +114,12 @@ Future<void> configureDependencies() async {
       getIt<AlarmPermissionService>(),
     );
   });
+
+  // --- App-wide cubits ---------------------------------------------------
+  // LocaleCubit is a singleton: one source of truth for the active language,
+  // provided at the widget-tree root and read by the language onboarding step.
+  getIt.registerLazySingleton<LocaleCubit>(
+      () => LocaleCubit(getIt<SettingsRepository>()));
 
   // --- Use cases ---------------------------------------------------------
   getIt

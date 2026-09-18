@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 
 import '../../../domain/enums/feedback_category.dart';
+import '../../../domain/enums/feedback_delivery_status.dart';
 import '../../../domain/models/feedback_model.dart';
 import '../../../domain/models/mosque_model.dart';
 
@@ -85,9 +86,21 @@ class FeedbackItemAdapter extends TypeAdapter<FeedbackItem> {
       message: fields[2] as String,
       email: fields[3] as String?,
       createdAt: DateTime.fromMillisecondsSinceEpoch(fields[4] as int),
-      submitted: fields[5] as bool? ?? false,
+      deliveryStatus: _readStatus(fields[5]),
       appVersion: fields[6] as String?,
     );
+  }
+
+  /// Field 5 historically stored a `submitted` bool; newer records store the
+  /// [FeedbackDeliveryStatus] key as a String. Read both for compatibility.
+  static FeedbackDeliveryStatus _readStatus(Object? raw) {
+    if (raw is String) return FeedbackDeliveryStatus.fromKey(raw);
+    if (raw is bool) {
+      return raw
+          ? FeedbackDeliveryStatus.handoffInitiated
+          : FeedbackDeliveryStatus.pending;
+    }
+    return FeedbackDeliveryStatus.pending;
   }
 
   @override
@@ -105,7 +118,7 @@ class FeedbackItemAdapter extends TypeAdapter<FeedbackItem> {
       ..writeByte(4)
       ..write(obj.createdAt.millisecondsSinceEpoch)
       ..writeByte(5)
-      ..write(obj.submitted)
+      ..write(obj.deliveryStatus.key)
       ..writeByte(6)
       ..write(obj.appVersion);
   }

@@ -214,6 +214,12 @@ abstract class AppLocalizations {
   /// **'Choose your language'**
   String get onboardingLanguageTitle;
 
+  /// No description provided for @onboardingLanguageSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You can change the app language anytime from Settings.'**
+  String get onboardingLanguageSubtitle;
+
   /// No description provided for @onboardingLocationTitle.
   ///
   /// In en, this message translates to:

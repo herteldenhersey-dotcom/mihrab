@@ -8,6 +8,12 @@ abstract class SettingsRepository {
   Future<void> saveCalculationSettings(CalculationSettings settings);
 
   Future<LanguageCode> getLanguage();
+
+  /// The explicitly-saved language, or `null` if the user has never chosen one
+  /// (fresh install). Lets callers apply device-locale detection instead of a
+  /// hardcoded default. [getLanguage] keeps returning a non-null fallback.
+  Future<LanguageCode?> getStoredLanguage();
+
   Future<void> saveLanguage(LanguageCode language);
 
   Future<AppLocation?> getSavedLocation();

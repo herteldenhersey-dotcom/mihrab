@@ -71,6 +71,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboardingLanguageTitle => 'اختر لغتك';
 
   @override
+  String get onboardingLanguageSubtitle =>
+      'يمكنك تغيير لغة التطبيق في أي وقت من الإعدادات.';
+
+  @override
   String get onboardingLocationTitle => 'إذن الموقع';
 
   @override

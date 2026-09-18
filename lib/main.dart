@@ -6,6 +6,7 @@ import 'core/router/app_router.dart';
 import 'data/services/notification/notification_service.dart';
 import 'domain/repositories/settings_repository.dart';
 import 'injection.dart';
+import 'localization/cubit/locale_cubit.dart';
 
 /// Application entry point.
 ///
@@ -36,13 +37,17 @@ Future<void> main() async {
 
   final settings = getIt<SettingsRepository>();
   final onboardingComplete = await settings.getOnboardingComplete();
-  final language = await settings.getLanguage();
   final darkMode = await settings.getDarkMode();
+
+  // Resolve the active language before first frame (stored choice, else device
+  // locale detection with English fallback) so there is no visible re-layout.
+  final localeCubit = getIt<LocaleCubit>();
+  await localeCubit.load();
 
   runApp(
     MihrabApp(
+      localeCubit: localeCubit,
       router: buildAppRouter(onboardingComplete: onboardingComplete),
-      locale: language.locale,
       themeMode: darkMode ? ThemeMode.dark : ThemeMode.system,
     ),
   );

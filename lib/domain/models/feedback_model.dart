@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../enums/feedback_category.dart';
+import '../enums/feedback_delivery_status.dart';
 
 /// A single feedback entry authored by the user.
 class FeedbackItem extends Equatable {
@@ -10,10 +11,13 @@ class FeedbackItem extends Equatable {
   final String? email;
   final DateTime createdAt;
 
-  /// Whether this item has been successfully handed off (e.g. email sent /
-  /// synced to a backend). In V1 this flips to true once the mail intent
-  /// is launched.
-  final bool submitted;
+  /// Delivery lifecycle of this item. See [FeedbackDeliveryStatus].
+  ///
+  /// NOTE: In V1 the most that can be reported is
+  /// [FeedbackDeliveryStatus.handoffInitiated] (the `mailto:` intent was
+  /// launched). Only a real backend can advance to
+  /// [FeedbackDeliveryStatus.delivered].
+  final FeedbackDeliveryStatus deliveryStatus;
 
   /// App version captured at authoring time (diagnostics).
   final String? appVersion;
@@ -24,7 +28,7 @@ class FeedbackItem extends Equatable {
     required this.message,
     required this.createdAt,
     this.email,
-    this.submitted = false,
+    this.deliveryStatus = FeedbackDeliveryStatus.pending,
     this.appVersion,
   });
 
@@ -34,7 +38,7 @@ class FeedbackItem extends Equatable {
     String? message,
     String? email,
     DateTime? createdAt,
-    bool? submitted,
+    FeedbackDeliveryStatus? deliveryStatus,
     String? appVersion,
   }) {
     return FeedbackItem(
@@ -43,7 +47,7 @@ class FeedbackItem extends Equatable {
       message: message ?? this.message,
       email: email ?? this.email,
       createdAt: createdAt ?? this.createdAt,
-      submitted: submitted ?? this.submitted,
+      deliveryStatus: deliveryStatus ?? this.deliveryStatus,
       appVersion: appVersion ?? this.appVersion,
     );
   }
@@ -54,7 +58,7 @@ class FeedbackItem extends Equatable {
         'message': message,
         'email': email,
         'createdAt': createdAt.toIso8601String(),
-        'submitted': submitted,
+        'deliveryStatus': deliveryStatus.key,
         'appVersion': appVersion,
       };
 
@@ -64,11 +68,26 @@ class FeedbackItem extends Equatable {
         message: json['message'] as String? ?? '',
         email: json['email'] as String?,
         createdAt: DateTime.parse(json['createdAt'] as String),
-        submitted: json['submitted'] as bool? ?? false,
+        deliveryStatus: _readStatus(json),
         appVersion: json['appVersion'] as String?,
       );
 
+  /// Reads the delivery status, falling back to the legacy `submitted` boolean
+  /// (true -> handoffInitiated, false -> pending) for backward compatibility
+  /// with items persisted by earlier builds.
+  static FeedbackDeliveryStatus _readStatus(Map<String, dynamic> json) {
+    final raw = json['deliveryStatus'];
+    if (raw is String) return FeedbackDeliveryStatus.fromKey(raw);
+    final legacy = json['submitted'];
+    if (legacy is bool) {
+      return legacy
+          ? FeedbackDeliveryStatus.handoffInitiated
+          : FeedbackDeliveryStatus.pending;
+    }
+    return FeedbackDeliveryStatus.pending;
+  }
+
   @override
   List<Object?> get props =>
-      [id, category, message, email, createdAt, submitted, appVersion];
+      [id, category, message, email, createdAt, deliveryStatus, appVersion];
 }

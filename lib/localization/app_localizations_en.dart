@@ -72,6 +72,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboardingLanguageTitle => 'Choose your language';
 
   @override
+  String get onboardingLanguageSubtitle =>
+      'You can change the app language anytime from Settings.';
+
+  @override
   String get onboardingLocationTitle => 'Location permission';
 
   @override
