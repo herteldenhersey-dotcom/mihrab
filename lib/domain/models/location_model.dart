@@ -20,6 +20,21 @@ class AppLocation extends Equatable {
     this.isManual = false,
   });
 
+  /// Whether [latitude]/[longitude] are finite and within valid Earth bounds.
+  ///
+  /// Rejects NaN, +/-infinity and impossible coordinates (|lat| > 90 or
+  /// |lng| > 180). Used to guard against malformed GPS reads or third-party
+  /// geocoder responses BEFORE a location is persisted or used for prayer
+  /// calculation.
+  static bool isValidCoordinate(double latitude, double longitude) =>
+      latitude.isFinite &&
+      longitude.isFinite &&
+      latitude.abs() <= 90.0 &&
+      longitude.abs() <= 180.0;
+
+  /// Whether this location's coordinates pass [isValidCoordinate].
+  bool get hasValidCoordinates => isValidCoordinate(latitude, longitude);
+
   /// A coarse cache key (~1.1 km precision) used for mosque/prayer caching.
   String get cacheKey =>
       '${latitude.toStringAsFixed(2)}_${longitude.toStringAsFixed(2)}';

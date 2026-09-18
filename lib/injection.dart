@@ -14,6 +14,7 @@ import 'data/datasources/local/hive_mosque_cache.dart';
 import 'data/datasources/local/shared_prefs_settings.dart';
 import 'data/datasources/remote/overpass_api_datasource.dart';
 import 'data/providers/adhan_prayer_time_provider.dart';
+import 'data/repositories/geocoding_location_search_repository.dart';
 import 'data/repositories/geolocator_location_repository.dart';
 import 'data/repositories/hive_settings_repository.dart';
 import 'data/repositories/local_feedback_repository.dart';
@@ -29,6 +30,7 @@ import 'domain/models/feedback_model.dart';
 import 'domain/providers/prayer_time_provider.dart';
 import 'domain/repositories/feedback_repository.dart';
 import 'domain/repositories/location_repository.dart';
+import 'domain/repositories/location_search_repository.dart';
 import 'domain/repositories/mosque_repository.dart';
 import 'domain/repositories/settings_repository.dart';
 import 'domain/usecases/get_nearby_mosques_usecase.dart';
@@ -87,6 +89,8 @@ Future<void> configureDependencies() async {
         ))
     ..registerLazySingleton<LocationRepository>(
         () => GeolocatorLocationRepository())
+    ..registerLazySingleton<LocationSearchRepository>(
+        () => GeocodingLocationSearchRepository())
     ..registerLazySingleton<SettingsRepository>(
         () => HiveSettingsRepository(getIt<SharedPrefsSettings>()));
 

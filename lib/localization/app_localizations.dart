@@ -478,6 +478,186 @@ abstract class AppLocalizations {
   /// **'Grant permission'**
   String get grantPermission;
 
+  /// No description provided for @locationSetupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Set your location'**
+  String get locationSetupTitle;
+
+  /// No description provided for @locationSetupSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MİHRAB needs your location for accurate prayer times, the qibla direction and nearby mosques.'**
+  String get locationSetupSubtitle;
+
+  /// No description provided for @locationUseMyLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Use my location'**
+  String get locationUseMyLocation;
+
+  /// No description provided for @locationSelectManually.
+  ///
+  /// In en, this message translates to:
+  /// **'Select manually'**
+  String get locationSelectManually;
+
+  /// No description provided for @locationRationaleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Why we need your location'**
+  String get locationRationaleTitle;
+
+  /// No description provided for @locationRationaleBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your location is used only on this device to calculate accurate prayer times, point you toward the qibla and find nearby mosques. It is never tracked in the background.'**
+  String get locationRationaleBody;
+
+  /// No description provided for @locationSearching.
+  ///
+  /// In en, this message translates to:
+  /// **'Finding your location…'**
+  String get locationSearching;
+
+  /// No description provided for @locationFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Location found'**
+  String get locationFound;
+
+  /// No description provided for @locationServicesDisabledTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Location services are off'**
+  String get locationServicesDisabledTitle;
+
+  /// No description provided for @locationServicesDisabledBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on location services to use your current location, or select your location manually.'**
+  String get locationServicesDisabledBody;
+
+  /// No description provided for @locationPermissionDeniedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission denied'**
+  String get locationPermissionDeniedTitle;
+
+  /// No description provided for @locationPermissionDeniedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'We can’t access your location. You can try again or select your location manually.'**
+  String get locationPermissionDeniedBody;
+
+  /// No description provided for @locationPermissionPermanentlyDeniedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission is off'**
+  String get locationPermissionPermanentlyDeniedTitle;
+
+  /// No description provided for @locationPermissionPermanentlyDeniedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission is permanently denied. Open Settings to allow it, or select your location manually.'**
+  String get locationPermissionPermanentlyDeniedBody;
+
+  /// No description provided for @locationTimeoutBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Getting your location took too long. Please try again or select manually.'**
+  String get locationTimeoutBody;
+
+  /// No description provided for @locationErrorBody.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn’t get your location. Please try again or select manually.'**
+  String get locationErrorBody;
+
+  /// No description provided for @openAppSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open settings'**
+  String get openAppSettings;
+
+  /// No description provided for @openLocationSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open location settings'**
+  String get openLocationSettings;
+
+  /// No description provided for @locationManualTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for your location'**
+  String get locationManualTitle;
+
+  /// No description provided for @locationSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for a city or district'**
+  String get locationSearchHint;
+
+  /// No description provided for @locationSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get locationSearch;
+
+  /// No description provided for @locationCountry.
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get locationCountry;
+
+  /// No description provided for @locationCity.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get locationCity;
+
+  /// No description provided for @locationDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get locationDistrict;
+
+  /// No description provided for @locationNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found. Try a different search.'**
+  String get locationNoResults;
+
+  /// No description provided for @tryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get tryAgain;
+
+  /// No description provided for @locationConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm location'**
+  String get locationConfirm;
+
+  /// No description provided for @locationChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Change location'**
+  String get locationChange;
+
+  /// No description provided for @locationAddressUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to determine address'**
+  String get locationAddressUnavailable;
+
+  /// No description provided for @locationUsingCoordinates.
+  ///
+  /// In en, this message translates to:
+  /// **'Using coordinates'**
+  String get locationUsingCoordinates;
+
   /// No description provided for @phase1Placeholder.
   ///
   /// In en, this message translates to:

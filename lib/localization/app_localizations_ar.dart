@@ -205,5 +205,103 @@ class AppLocalizationsAr extends AppLocalizations {
   String get grantPermission => 'منح الإذن';
 
   @override
+  String get locationSetupTitle => 'حدّد موقعك';
+
+  @override
+  String get locationSetupSubtitle =>
+      'يحتاج المحراب إلى موقعك لحساب أوقات الصلاة الدقيقة واتجاه القبلة والمساجد القريبة.';
+
+  @override
+  String get locationUseMyLocation => 'استخدام موقعي';
+
+  @override
+  String get locationSelectManually => 'التحديد يدويًا';
+
+  @override
+  String get locationRationaleTitle => 'لماذا نحتاج إلى موقعك';
+
+  @override
+  String get locationRationaleBody =>
+      'يُستخدم موقعك على هذا الجهاز فقط لحساب أوقات الصلاة الدقيقة وتحديد اتجاه القبلة والعثور على المساجد القريبة. ولا تتم مراقبته في الخلفية أبدًا.';
+
+  @override
+  String get locationSearching => 'جارٍ تحديد موقعك…';
+
+  @override
+  String get locationFound => 'تم العثور على الموقع';
+
+  @override
+  String get locationServicesDisabledTitle => 'خدمات الموقع متوقفة';
+
+  @override
+  String get locationServicesDisabledBody =>
+      'فعّل خدمات الموقع لاستخدام موقعك الحالي، أو حدّد موقعك يدويًا.';
+
+  @override
+  String get locationPermissionDeniedTitle => 'تم رفض إذن الموقع';
+
+  @override
+  String get locationPermissionDeniedBody =>
+      'لا يمكننا الوصول إلى موقعك. يمكنك المحاولة مرة أخرى أو تحديد موقعك يدويًا.';
+
+  @override
+  String get locationPermissionPermanentlyDeniedTitle => 'إذن الموقع متوقف';
+
+  @override
+  String get locationPermissionPermanentlyDeniedBody =>
+      'تم رفض إذن الموقع بشكل دائم. افتح الإعدادات للسماح به، أو حدّد موقعك يدويًا.';
+
+  @override
+  String get locationTimeoutBody =>
+      'استغرق تحديد موقعك وقتًا طويلًا. يرجى المحاولة مرة أخرى أو التحديد يدويًا.';
+
+  @override
+  String get locationErrorBody =>
+      'تعذّر الحصول على موقعك. يرجى المحاولة مرة أخرى أو التحديد يدويًا.';
+
+  @override
+  String get openAppSettings => 'فتح الإعدادات';
+
+  @override
+  String get openLocationSettings => 'فتح إعدادات الموقع';
+
+  @override
+  String get locationManualTitle => 'ابحث عن موقعك';
+
+  @override
+  String get locationSearchHint => 'ابحث عن مدينة أو منطقة';
+
+  @override
+  String get locationSearch => 'بحث';
+
+  @override
+  String get locationCountry => 'الدولة';
+
+  @override
+  String get locationCity => 'المدينة';
+
+  @override
+  String get locationDistrict => 'المنطقة';
+
+  @override
+  String get locationNoResults =>
+      'لم يتم العثور على نتائج. جرّب بحثًا مختلفًا.';
+
+  @override
+  String get tryAgain => 'إعادة المحاولة';
+
+  @override
+  String get locationConfirm => 'تأكيد الموقع';
+
+  @override
+  String get locationChange => 'تغيير الموقع';
+
+  @override
+  String get locationAddressUnavailable => 'تعذّر تحديد العنوان';
+
+  @override
+  String get locationUsingCoordinates => 'استخدام الإحداثيات';
+
+  @override
   String get phase1Placeholder => 'سيتم تنفيذ هذه الشاشة في مرحلة لاحقة.';
 }

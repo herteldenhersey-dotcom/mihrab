@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../domain/enums/language_code.dart';
 import '../../../../domain/enums/prayer_calculation_method.dart';
+import '../../../../domain/models/location_model.dart';
 import '../../../../domain/repositories/settings_repository.dart';
 
 part 'onboarding_state.dart';
@@ -33,6 +34,16 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     await _settings.saveLanguage(language);
   }
 
+  /// Records the location resolved by the location step. The
+  /// [LocationOnboardingCubit] already persisted it to storage; this keeps the
+  /// shell's Continue gate and the final [complete] in sync. Passing null
+  /// (e.g. after "Change location") clears it.
+  void setLocation(AppLocation? location) => emit(
+        location == null
+            ? state.copyWith(clearLocation: true)
+            : state.copyWith(location: location),
+      );
+
   void setNotificationsEnabled(bool enabled) =>
       emit(state.copyWith(notificationsEnabled: enabled));
 
@@ -46,6 +57,12 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     final current = await _settings.getCalculationSettings();
     await _settings
         .saveCalculationSettings(current.copyWith(method: state.method));
+    // Re-persist the chosen location (idempotent: the location step already
+    // saved it) so a valid coordinate is guaranteed to be stored on completion.
+    final location = state.location;
+    if (location != null && location.hasValidCoordinates) {
+      await _settings.saveLocation(location);
+    }
     await _settings.saveOnboardingComplete(true);
     emit(state.copyWith(completed: true));
   }

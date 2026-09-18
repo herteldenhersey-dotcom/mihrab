@@ -49,6 +49,11 @@ class _OnboardingView extends StatelessWidget {
           CalculationStep(),
         ];
         final isLast = state.step == OnboardingCubit.totalSteps - 1;
+        // The location step (index 1) requires a resolved location before the
+        // user can continue — the app must not proceed without one.
+        const locationStepIndex = 1;
+        final canAdvance =
+            state.step != locationStepIndex || state.location != null;
 
         return Scaffold(
           body: SafeArea(
@@ -72,8 +77,9 @@ class _OnboardingView extends StatelessWidget {
                         ),
                       const Spacer(),
                       ElevatedButton(
-                        onPressed: () =>
-                            isLast ? cubit.complete() : cubit.nextStep(),
+                        onPressed: !canAdvance
+                            ? null
+                            : () => isLast ? cubit.complete() : cubit.nextStep(),
                         child: Text(isLast ? l10n.finish : l10n.continueLabel),
                       ),
                     ],

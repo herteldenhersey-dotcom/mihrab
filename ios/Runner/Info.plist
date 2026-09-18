@@ -5,13 +5,13 @@
         <key>CADisableMinimumFrameDurationOnPhone</key>
         <true/>
         <!-- ==================== Privacy usage descriptions ==================== -->
-        <!-- Location: prayer times, qibla direction and nearby mosques. -->
+        <!-- Location: prayer times, qibla direction and nearby mosques.
+             V1 uses a ONE-TIME, when-in-use fix only — NO background location,
+             so only NSLocationWhenInUseUsageDescription is declared. The
+             "Always"/background usage keys were intentionally removed in
+             Phase 3 to match the minimum-permission privacy policy. -->
         <key>NSLocationWhenInUseUsageDescription</key>
         <string>Namaz vakitlerini, kıble yönünü ve yakınınızdaki camileri konumunuza göre hesaplamak için konumunuz kullanılır. / Your location is used to calculate prayer times, qibla direction and nearby mosques.</string>
-        <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-        <string>Konumunuz namaz vakti bildirimlerini bulunduğunuz yere göre güncel tutmak için kullanılır. / Your location keeps prayer time notifications accurate for where you are.</string>
-        <key>NSLocationAlwaysUsageDescription</key>
-        <string>Konumunuz namaz vakti bildirimlerini bulunduğunuz yere göre güncel tutmak için kullanılır. / Your location keeps prayer time notifications accurate for where you are.</string>
         <!-- Motion: magnetometer/compass powers the qibla finder. -->
         <key>NSMotionUsageDescription</key>
         <string>Kıble pusulasının doğru çalışması için hareket ve yön sensörleri kullanılır. / Motion and orientation sensors are used so the qibla compass works accurately.</string>

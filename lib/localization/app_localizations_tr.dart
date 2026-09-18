@@ -208,6 +208,103 @@ class AppLocalizationsTr extends AppLocalizations {
   String get grantPermission => 'İzin ver';
 
   @override
+  String get locationSetupTitle => 'Konumunuzu ayarlayın';
+
+  @override
+  String get locationSetupSubtitle =>
+      'MİHRAB; doğru namaz vakitleri, kıble yönü ve yakındaki camiler için konumunuza ihtiyaç duyar.';
+
+  @override
+  String get locationUseMyLocation => 'Konumumu kullan';
+
+  @override
+  String get locationSelectManually => 'Elle seç';
+
+  @override
+  String get locationRationaleTitle => 'Konumunuz neden gerekli';
+
+  @override
+  String get locationRationaleBody =>
+      'Konumunuz yalnızca bu cihazda; doğru namaz vakitlerini hesaplamak, kıble yönünü göstermek ve yakındaki camileri bulmak için kullanılır. Arka planda asla takip edilmez.';
+
+  @override
+  String get locationSearching => 'Konumunuz aranıyor…';
+
+  @override
+  String get locationFound => 'Konum bulundu';
+
+  @override
+  String get locationServicesDisabledTitle => 'Konum servisleri kapalı';
+
+  @override
+  String get locationServicesDisabledBody =>
+      'Mevcut konumunuzu kullanmak için konum servislerini açın veya konumunuzu elle seçin.';
+
+  @override
+  String get locationPermissionDeniedTitle => 'Konum izni verilmedi';
+
+  @override
+  String get locationPermissionDeniedBody =>
+      'Konumunuza erişemiyoruz. Tekrar deneyebilir veya konumunuzu elle seçebilirsiniz.';
+
+  @override
+  String get locationPermissionPermanentlyDeniedTitle => 'Konum izni kapalı';
+
+  @override
+  String get locationPermissionPermanentlyDeniedBody =>
+      'Konum izni kalıcı olarak reddedildi. İzin vermek için Ayarlar\'ı açın veya konumunuzu elle seçin.';
+
+  @override
+  String get locationTimeoutBody =>
+      'Konumunuz alınırken çok uzun sürdü. Lütfen tekrar deneyin veya elle seçin.';
+
+  @override
+  String get locationErrorBody =>
+      'Konumunuzu alamadık. Lütfen tekrar deneyin veya elle seçin.';
+
+  @override
+  String get openAppSettings => 'Ayarları aç';
+
+  @override
+  String get openLocationSettings => 'Konum ayarlarını aç';
+
+  @override
+  String get locationManualTitle => 'Konumunuzu arayın';
+
+  @override
+  String get locationSearchHint => 'Şehir veya ilçe arayın';
+
+  @override
+  String get locationSearch => 'Ara';
+
+  @override
+  String get locationCountry => 'Ülke';
+
+  @override
+  String get locationCity => 'Şehir';
+
+  @override
+  String get locationDistrict => 'İlçe';
+
+  @override
+  String get locationNoResults => 'Sonuç bulunamadı. Farklı bir arama deneyin.';
+
+  @override
+  String get tryAgain => 'Tekrar dene';
+
+  @override
+  String get locationConfirm => 'Konumu onayla';
+
+  @override
+  String get locationChange => 'Konumu değiştir';
+
+  @override
+  String get locationAddressUnavailable => 'Adres belirlenemedi';
+
+  @override
+  String get locationUsingCoordinates => 'Koordinatlar kullanılıyor';
+
+  @override
   String get phase1Placeholder =>
       'Bu ekran ilerleyen bir fazda uygulanacaktır.';
 }

@@ -207,6 +207,104 @@ class AppLocalizationsEn extends AppLocalizations {
   String get grantPermission => 'Grant permission';
 
   @override
+  String get locationSetupTitle => 'Set your location';
+
+  @override
+  String get locationSetupSubtitle =>
+      'MİHRAB needs your location for accurate prayer times, the qibla direction and nearby mosques.';
+
+  @override
+  String get locationUseMyLocation => 'Use my location';
+
+  @override
+  String get locationSelectManually => 'Select manually';
+
+  @override
+  String get locationRationaleTitle => 'Why we need your location';
+
+  @override
+  String get locationRationaleBody =>
+      'Your location is used only on this device to calculate accurate prayer times, point you toward the qibla and find nearby mosques. It is never tracked in the background.';
+
+  @override
+  String get locationSearching => 'Finding your location…';
+
+  @override
+  String get locationFound => 'Location found';
+
+  @override
+  String get locationServicesDisabledTitle => 'Location services are off';
+
+  @override
+  String get locationServicesDisabledBody =>
+      'Turn on location services to use your current location, or select your location manually.';
+
+  @override
+  String get locationPermissionDeniedTitle => 'Location permission denied';
+
+  @override
+  String get locationPermissionDeniedBody =>
+      'We can’t access your location. You can try again or select your location manually.';
+
+  @override
+  String get locationPermissionPermanentlyDeniedTitle =>
+      'Location permission is off';
+
+  @override
+  String get locationPermissionPermanentlyDeniedBody =>
+      'Location permission is permanently denied. Open Settings to allow it, or select your location manually.';
+
+  @override
+  String get locationTimeoutBody =>
+      'Getting your location took too long. Please try again or select manually.';
+
+  @override
+  String get locationErrorBody =>
+      'We couldn’t get your location. Please try again or select manually.';
+
+  @override
+  String get openAppSettings => 'Open settings';
+
+  @override
+  String get openLocationSettings => 'Open location settings';
+
+  @override
+  String get locationManualTitle => 'Search for your location';
+
+  @override
+  String get locationSearchHint => 'Search for a city or district';
+
+  @override
+  String get locationSearch => 'Search';
+
+  @override
+  String get locationCountry => 'Country';
+
+  @override
+  String get locationCity => 'City';
+
+  @override
+  String get locationDistrict => 'District';
+
+  @override
+  String get locationNoResults => 'No results found. Try a different search.';
+
+  @override
+  String get tryAgain => 'Try again';
+
+  @override
+  String get locationConfirm => 'Confirm location';
+
+  @override
+  String get locationChange => 'Change location';
+
+  @override
+  String get locationAddressUnavailable => 'Unable to determine address';
+
+  @override
+  String get locationUsingCoordinates => 'Using coordinates';
+
+  @override
   String get phase1Placeholder =>
       'This screen will be implemented in a later phase.';
 }
