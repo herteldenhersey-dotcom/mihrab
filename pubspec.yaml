@@ -1,0 +1,92 @@
+name: mihrab
+description: "MİHRAB — İslami namaz ve ibadet asistanı (production Flutter app)."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+
+  # Navigation
+  go_router: ^14.3.0
+
+  # Prayer times (offline calculation)
+  adhan: ^2.0.0
+
+  # Location
+  geolocator: ^13.0.1
+  geocoding: ^3.0.0
+
+  # Compass / Qibla
+  flutter_compass: ^0.8.0
+
+  # Notifications
+  flutter_local_notifications: ^18.0.1
+  timezone: ^0.9.4
+  workmanager: ^0.5.2
+
+  # Maps / Mosque search (OpenStreetMap)
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+
+  # HTTP
+  dio: ^5.7.0
+
+  # Local storage
+  shared_preferences: ^2.3.3
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # Dependency injection (manual get_it registration — see injection.dart)
+  get_it: ^8.0.2
+
+  # Environment / secrets
+  flutter_dotenv: ^5.2.1
+
+  # Permissions
+  permission_handler: ^11.3.1
+
+  # Connectivity
+  connectivity_plus: ^6.1.0
+
+  # Package info
+  package_info_plus: ^8.1.0
+
+  # URL launcher (navigation handoff, email intent)
+  url_launcher: ^6.3.1
+
+  # Intl
+  intl: ^0.20.2
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # NOTE: hive_generator / injectable_generator / build_runner / mockito are
+  # intentionally omitted. On the current stable toolchain (Dart 3.13 / analyzer 8.x)
+  # those older generators transitively require the broken `macros`/`_macros`
+  # package and fail dependency resolution. We therefore use MANUAL Hive
+  # TypeAdapters and MANUAL get_it registration (see lib/injection.dart), and
+  # hand-written fakes in tests. This keeps the build reproducible with zero
+  # codegen. Providers/repositories remain fully abstracted for later swap.
+  flutter_lints: ^4.0.0
+  bloc_test: ^9.1.7
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - .env
+    - .env.example
+
+  generate: true
