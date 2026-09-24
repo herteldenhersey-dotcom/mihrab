@@ -658,6 +658,198 @@ abstract class AppLocalizations {
   /// **'Using coordinates'**
   String get locationUsingCoordinates;
 
+  /// No description provided for @homeToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get homeToday;
+
+  /// No description provided for @homeTomorrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Tomorrow'**
+  String get homeTomorrow;
+
+  /// No description provided for @homePrayerTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Times'**
+  String get homePrayerTimes;
+
+  /// No description provided for @homeNextPrayer.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Prayer'**
+  String get homeNextPrayer;
+
+  /// No description provided for @homeTimeRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Remaining'**
+  String get homeTimeRemaining;
+
+  /// No description provided for @homeGregorianDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get homeGregorianDate;
+
+  /// No description provided for @homeHijriDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Hijri Date'**
+  String get homeHijriDate;
+
+  /// No description provided for @homeLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get homeLocation;
+
+  /// No description provided for @homeChangeLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Location'**
+  String get homeChangeLocation;
+
+  /// No description provided for @homeRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get homeRefresh;
+
+  /// No description provided for @homeLastUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Updated'**
+  String get homeLastUpdated;
+
+  /// No description provided for @homeLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculating prayer times...'**
+  String get homeLoading;
+
+  /// No description provided for @homeErrorPrayerCalc.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not calculate prayer times.'**
+  String get homeErrorPrayerCalc;
+
+  /// No description provided for @homeErrorTimezone.
+  ///
+  /// In en, this message translates to:
+  /// **'Timezone for location could not be determined.'**
+  String get homeErrorTimezone;
+
+  /// No description provided for @homeErrorMissingLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Location required for prayer times.'**
+  String get homeErrorMissingLocation;
+
+  /// No description provided for @homeSetLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Location'**
+  String get homeSetLocation;
+
+  /// No description provided for @homeComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming Soon'**
+  String get homeComingSoon;
+
+  /// No description provided for @homeQibla.
+  ///
+  /// In en, this message translates to:
+  /// **'Qibla'**
+  String get homeQibla;
+
+  /// No description provided for @homeNearbyMosques.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearby Mosques'**
+  String get homeNearbyMosques;
+
+  /// No description provided for @homeRamadan.
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan'**
+  String get homeRamadan;
+
+  /// No description provided for @homeSunriseLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunrise'**
+  String get homeSunriseLabel;
+
+  /// No description provided for @homeSunriseNote.
+  ///
+  /// In en, this message translates to:
+  /// **'(Not an obligatory prayer)'**
+  String get homeSunriseNote;
+
+  /// No description provided for @homeRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get homeRetry;
+
+  /// No description provided for @homeNextPrayerIn.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}'**
+  String homeNextPrayerIn(String name);
+
+  /// No description provided for @homePrayerFajr.
+  ///
+  /// In en, this message translates to:
+  /// **'Fajr'**
+  String get homePrayerFajr;
+
+  /// No description provided for @homePrayerSunrise.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunrise'**
+  String get homePrayerSunrise;
+
+  /// No description provided for @homePrayerDhuhr.
+  ///
+  /// In en, this message translates to:
+  /// **'Dhuhr'**
+  String get homePrayerDhuhr;
+
+  /// No description provided for @homePrayerAsr.
+  ///
+  /// In en, this message translates to:
+  /// **'Asr'**
+  String get homePrayerAsr;
+
+  /// No description provided for @homePrayerMaghrib.
+  ///
+  /// In en, this message translates to:
+  /// **'Maghrib'**
+  String get homePrayerMaghrib;
+
+  /// No description provided for @homePrayerIsha.
+  ///
+  /// In en, this message translates to:
+  /// **'Isha'**
+  String get homePrayerIsha;
+
+  /// No description provided for @homeSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get homeSettings;
+
+  /// No description provided for @homeTimezoneUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Timezone: {id}'**
+  String homeTimezoneUsed(String id);
+
   /// No description provided for @phase1Placeholder.
   ///
   /// In en, this message translates to:

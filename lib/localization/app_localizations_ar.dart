@@ -303,5 +303,105 @@ class AppLocalizationsAr extends AppLocalizations {
   String get locationUsingCoordinates => 'استخدام الإحداثيات';
 
   @override
+  String get homeToday => 'اليوم';
+
+  @override
+  String get homeTomorrow => 'غداً';
+
+  @override
+  String get homePrayerTimes => 'مواقيت الصلاة';
+
+  @override
+  String get homeNextPrayer => 'الصلاة القادمة';
+
+  @override
+  String get homeTimeRemaining => 'الوقت المتبقي';
+
+  @override
+  String get homeGregorianDate => 'التاريخ';
+
+  @override
+  String get homeHijriDate => 'التاريخ الهجري';
+
+  @override
+  String get homeLocation => 'الموقع';
+
+  @override
+  String get homeChangeLocation => 'تغيير الموقع';
+
+  @override
+  String get homeRefresh => 'تحديث';
+
+  @override
+  String get homeLastUpdated => 'آخر تحديث';
+
+  @override
+  String get homeLoading => 'جارٍ حساب مواقيت الصلاة...';
+
+  @override
+  String get homeErrorPrayerCalc => 'تعذّر حساب مواقيت الصلاة.';
+
+  @override
+  String get homeErrorTimezone => 'تعذّر تحديد المنطقة الزمنية للموقع.';
+
+  @override
+  String get homeErrorMissingLocation => 'يلزم تحديد الموقع لمواقيت الصلاة.';
+
+  @override
+  String get homeSetLocation => 'تحديد الموقع';
+
+  @override
+  String get homeComingSoon => 'قريبًا';
+
+  @override
+  String get homeQibla => 'القبلة';
+
+  @override
+  String get homeNearbyMosques => 'المساجد القريبة';
+
+  @override
+  String get homeRamadan => 'رمضان';
+
+  @override
+  String get homeSunriseLabel => 'شروق الشمس';
+
+  @override
+  String get homeSunriseNote => '(ليست فريضة)';
+
+  @override
+  String get homeRetry => 'إعادة المحاولة';
+
+  @override
+  String homeNextPrayerIn(String name) {
+    return '$name';
+  }
+
+  @override
+  String get homePrayerFajr => 'الفجر';
+
+  @override
+  String get homePrayerSunrise => 'الشروق';
+
+  @override
+  String get homePrayerDhuhr => 'الظهر';
+
+  @override
+  String get homePrayerAsr => 'العصر';
+
+  @override
+  String get homePrayerMaghrib => 'المغرب';
+
+  @override
+  String get homePrayerIsha => 'العشاء';
+
+  @override
+  String get homeSettings => 'الإعدادات';
+
+  @override
+  String homeTimezoneUsed(String id) {
+    return 'المنطقة الزمنية: $id';
+  }
+
+  @override
   String get phase1Placeholder => 'سيتم تنفيذ هذه الشاشة في مرحلة لاحقة.';
 }

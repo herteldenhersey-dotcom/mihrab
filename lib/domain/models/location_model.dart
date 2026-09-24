@@ -11,6 +11,15 @@ class AppLocation extends Equatable {
   /// Whether this location was picked manually by the user (vs. GPS).
   final bool isManual;
 
+  /// The IANA timezone identifier for this location (e.g. "Europe/Istanbul",
+  /// "America/New_York").  Nullable for backward compatibility with previously
+  /// persisted locations that pre-date Phase 4.  When null, HomeCubit falls
+  /// back to the last successfully resolved/cached timezone ID.
+  ///
+  /// Phase 4 Design: stored here so the timezone travels with the location
+  /// through the DI graph without additional lookups on every Home rebuild.
+  final String? timezoneId;
+
   const AppLocation({
     required this.latitude,
     required this.longitude,
@@ -18,6 +27,7 @@ class AppLocation extends Equatable {
     this.district,
     this.country,
     this.isManual = false,
+    this.timezoneId,
   });
 
   /// Whether [latitude]/[longitude] are finite and within valid Earth bounds.
@@ -56,6 +66,7 @@ class AppLocation extends Equatable {
     String? district,
     String? country,
     bool? isManual,
+    Object? timezoneId = _sentinel,
   }) {
     return AppLocation(
       latitude: latitude ?? this.latitude,
@@ -64,8 +75,12 @@ class AppLocation extends Equatable {
       district: district ?? this.district,
       country: country ?? this.country,
       isManual: isManual ?? this.isManual,
+      timezoneId:
+          timezoneId == _sentinel ? this.timezoneId : timezoneId as String?,
     );
   }
+
+  static const Object _sentinel = Object();
 
   Map<String, dynamic> toJson() => {
         'latitude': latitude,
@@ -74,6 +89,7 @@ class AppLocation extends Equatable {
         'district': district,
         'country': country,
         'isManual': isManual,
+        'timezoneId': timezoneId,
       };
 
   factory AppLocation.fromJson(Map<String, dynamic> json) => AppLocation(
@@ -83,9 +99,10 @@ class AppLocation extends Equatable {
         district: json['district'] as String?,
         country: json['country'] as String?,
         isManual: json['isManual'] as bool? ?? false,
+        timezoneId: json['timezoneId'] as String?,
       );
 
   @override
   List<Object?> get props =>
-      [latitude, longitude, city, district, country, isManual];
+      [latitude, longitude, city, district, country, isManual, timezoneId];
 }

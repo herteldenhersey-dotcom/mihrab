@@ -22,13 +22,64 @@ class NextPrayer {
 class PrayerTimeUtils {
   PrayerTimeUtils._();
 
-  /// Returns the next upcoming prayer given [today]'s times, an optional
-  /// [tomorrow]'s times (needed for the post-Isha window), and [now].
+  /// Returns the next upcoming *obligatory* prayer given [today]'s times, an
+  /// optional [tomorrow]'s times (needed for the post-Isha window), and [now].
+  ///
+  /// Phase 4 Design Decision — Sunrise semantics:
+  /// ─────────────────────────────────────────────────────────────────────
+  /// Sunrise is listed in [DailyPrayerTimes.ordered] and displayed in the
+  /// prayer-times list, but it is NOT one of the five obligatory prayers
+  /// (Fajr, Dhuhr, Asr, Maghrib, Isha).  This method therefore skips
+  /// Sunrise when determining the "Next Prayer" to ensure that between Fajr
+  /// and Dhuhr the UI correctly shows "Next: Dhuhr" rather than "Next: Sunrise".
+  ///
+  /// [PrayerType.sunrise] has [isObligatory] == false (existing domain enum).
+  /// We filter on that flag here so any future non-obligatory additions are
+  /// automatically excluded without changing this method.
   ///
   /// If [now] is after today's Isha and [tomorrow] is provided, returns
   /// tomorrow's Fajr. If [tomorrow] is null in that window, returns today's
   /// Fajr flagged as [isTomorrow] with the time advanced by one day so callers
   /// can still compute a countdown.
+  ///
+  /// Use [getNextPrayer] (legacy method below) if you need all ordered times
+  /// including Sunrise (e.g. for current-period logic).
+  static NextPrayer getNextObligatoryPrayer(
+    DailyPrayerTimes today,
+    DateTime now, {
+    DailyPrayerTimes? tomorrow,
+  }) {
+    for (final entry in today.ordered) {
+      if (!entry.key.isObligatory) continue; // skip Sunrise
+      if (entry.value.isAfter(now)) {
+        return NextPrayer(
+          type: entry.key,
+          time: entry.value,
+          isTomorrow: false,
+        );
+      }
+    }
+    // Past today's Isha → next is tomorrow's Fajr.
+    if (tomorrow != null) {
+      return NextPrayer(
+        type: PrayerType.fajr,
+        time: tomorrow.fajr,
+        isTomorrow: true,
+      );
+    }
+    // Fallback: advance today's Fajr by a day so a countdown is still valid.
+    return NextPrayer(
+      type: PrayerType.fajr,
+      time: today.fajr.add(const Duration(days: 1)),
+      isTomorrow: true,
+    );
+  }
+
+  /// Returns the next upcoming prayer (including Sunrise) given [today]'s
+  /// times, an optional [tomorrow]'s times, and [now].
+  ///
+  /// Kept for backward compatibility with existing use cases and tests.
+  /// Prefer [getNextObligatoryPrayer] for Home-screen "Next Prayer" display.
   static NextPrayer getNextPrayer(
     DailyPrayerTimes today,
     DateTime now, {
@@ -51,7 +102,6 @@ class PrayerTimeUtils {
         isTomorrow: true,
       );
     }
-    // Fallback: advance today's Fajr by a day so a countdown is still valid.
     return NextPrayer(
       type: PrayerType.fajr,
       time: today.fajr.add(const Duration(days: 1)),

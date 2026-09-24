@@ -305,6 +305,107 @@ class AppLocalizationsTr extends AppLocalizations {
   String get locationUsingCoordinates => 'Koordinatlar kullanılıyor';
 
   @override
+  String get homeToday => 'Bugün';
+
+  @override
+  String get homeTomorrow => 'Yarın';
+
+  @override
+  String get homePrayerTimes => 'Namaz Vakitleri';
+
+  @override
+  String get homeNextPrayer => 'Sonraki Namaz';
+
+  @override
+  String get homeTimeRemaining => 'Kalan Süre';
+
+  @override
+  String get homeGregorianDate => 'Gregoryen Tarih';
+
+  @override
+  String get homeHijriDate => 'Hicri Tarih';
+
+  @override
+  String get homeLocation => 'Konum';
+
+  @override
+  String get homeChangeLocation => 'Konumu Değiştir';
+
+  @override
+  String get homeRefresh => 'Yenile';
+
+  @override
+  String get homeLastUpdated => 'Son Güncelleme';
+
+  @override
+  String get homeLoading => 'Namaz vakitleri hesaplanıyor...';
+
+  @override
+  String get homeErrorPrayerCalc => 'Namaz vakitleri hesaplanamadı.';
+
+  @override
+  String get homeErrorTimezone => 'Konum saat dilimi belirlenemedi.';
+
+  @override
+  String get homeErrorMissingLocation =>
+      'Namaz vakitleri için konum gereklidir.';
+
+  @override
+  String get homeSetLocation => 'Konum Ayarla';
+
+  @override
+  String get homeComingSoon => 'Yakında';
+
+  @override
+  String get homeQibla => 'Kıble';
+
+  @override
+  String get homeNearbyMosques => 'Yakın Camiler';
+
+  @override
+  String get homeRamadan => 'Ramazan';
+
+  @override
+  String get homeSunriseLabel => 'Güneş Doğuşu';
+
+  @override
+  String get homeSunriseNote => '(Farz namaz değil)';
+
+  @override
+  String get homeRetry => 'Tekrar Dene';
+
+  @override
+  String homeNextPrayerIn(String name) {
+    return '$name vakti';
+  }
+
+  @override
+  String get homePrayerFajr => 'İmsak';
+
+  @override
+  String get homePrayerSunrise => 'Güneş';
+
+  @override
+  String get homePrayerDhuhr => 'Öğle';
+
+  @override
+  String get homePrayerAsr => 'İkindi';
+
+  @override
+  String get homePrayerMaghrib => 'Akşam';
+
+  @override
+  String get homePrayerIsha => 'Yatsı';
+
+  @override
+  String get homeSettings => 'Ayarlar';
+
+  @override
+  String homeTimezoneUsed(String id) {
+    return 'Saat dilimi: $id';
+  }
+
+  @override
   String get phase1Placeholder =>
       'Bu ekran ilerleyen bir fazda uygulanacaktır.';
 }

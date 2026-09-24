@@ -18,4 +18,7 @@ class AppRoutes {
   static const String ramadan = '/ramadan';
   static const String jummah = '/jummah';
   static const String feedback = '/feedback';
+
+  // Utility routes.
+  static const String locationSetup = '/location-setup';
 }

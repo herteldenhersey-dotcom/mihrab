@@ -16,11 +16,19 @@
   "timeRemaining": "Time Remaining",
   "notificationPrayerTitle": "{prayer} time",
   "@notificationPrayerTitle": {
-    "placeholders": { "prayer": { "type": "String" } }
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
   },
   "notificationPrayerBody": "It is time for {prayer} prayer.",
   "@notificationPrayerBody": {
-    "placeholders": { "prayer": { "type": "String" } }
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
   },
   "onboardingWelcomeTitle": "Welcome to MİHRAB",
   "onboardingWelcomeBody": "Your offline prayer & worship companion.",
@@ -99,5 +107,51 @@
   "locationChange": "Change location",
   "locationAddressUnavailable": "Unable to determine address",
   "locationUsingCoordinates": "Using coordinates",
+  "homeToday": "Today",
+  "homeTomorrow": "Tomorrow",
+  "homePrayerTimes": "Prayer Times",
+  "homeNextPrayer": "Next Prayer",
+  "homeTimeRemaining": "Time Remaining",
+  "homeGregorianDate": "Date",
+  "homeHijriDate": "Hijri Date",
+  "homeLocation": "Location",
+  "homeChangeLocation": "Change Location",
+  "homeRefresh": "Refresh",
+  "homeLastUpdated": "Last Updated",
+  "homeLoading": "Calculating prayer times...",
+  "homeErrorPrayerCalc": "Could not calculate prayer times.",
+  "homeErrorTimezone": "Timezone for location could not be determined.",
+  "homeErrorMissingLocation": "Location required for prayer times.",
+  "homeSetLocation": "Set Location",
+  "homeComingSoon": "Coming Soon",
+  "homeQibla": "Qibla",
+  "homeNearbyMosques": "Nearby Mosques",
+  "homeRamadan": "Ramadan",
+  "homeSunriseLabel": "Sunrise",
+  "homeSunriseNote": "(Not an obligatory prayer)",
+  "homeRetry": "Try Again",
+  "homeNextPrayerIn": "{name}",
+  "@homeNextPrayerIn": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homePrayerFajr": "Fajr",
+  "homePrayerSunrise": "Sunrise",
+  "homePrayerDhuhr": "Dhuhr",
+  "homePrayerAsr": "Asr",
+  "homePrayerMaghrib": "Maghrib",
+  "homePrayerIsha": "Isha",
+  "homeSettings": "Settings",
+  "homeTimezoneUsed": "Timezone: {id}",
+  "@homeTimezoneUsed": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
   "phase1Placeholder": "This screen will be implemented in a later phase."
 }

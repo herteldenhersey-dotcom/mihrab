@@ -1,4 +1,10 @@
 /// Date helpers: Hijri conversion and midnight/day-boundary utilities.
+///
+/// Phase 4 note — Hijri accuracy:
+/// The Kuwaiti algorithm used here produces an approximation (±1 day).
+/// These dates are suitable for display purposes only.  Authoritative
+/// religious dates (e.g. start of Ramadan) must defer to official local
+/// announcements.  MİHRAB makes no claim to be a religious authority.
 class AppDateUtils {
   AppDateUtils._();
 
@@ -14,25 +20,30 @@ class AppDateUtils {
   static bool isSameDay(DateTime a, DateTime b) =>
       a.year == b.year && a.month == b.month && a.day == b.day;
 
+  // ───────────────────────────────────────── Hijri month names ──────────
   static const List<String> _hijriMonthsTr = [
-    'Muharrem',
-    'Safer',
-    'Rebiülevvel',
-    'Rebiülahir',
-    'Cemaziyelevvel',
-    'Cemaziyelahir',
-    'Recep',
-    'Şaban',
-    'Ramazan',
-    'Şevval',
-    'Zilkade',
-    'Zilhicce',
+    'Muharrem', 'Safer', 'Rebiülevvel', 'Rebiülahir',
+    'Cemaziyelevvel', 'Cemaziyelahir', 'Recep', 'Şaban',
+    'Ramazan', 'Şevval', 'Zilkade', 'Zilhicce',
   ];
 
-  /// Converts a Gregorian [date] to a Hijri (Umm al-Qura style tabular)
-  /// date using the Kuwaiti algorithm. This is an approximation (±1 day)
-  /// suitable for display; authoritative religious dates should defer to
-  /// official announcements. Returns (year, month[1-12], day).
+  static const List<String> _hijriMonthsEn = [
+    'Muharram', 'Safar', "Rabi' al-Awwal", "Rabi' al-Thani",
+    'Jumada al-Awwal', 'Jumada al-Thani', 'Rajab', "Sha'ban",
+    'Ramadan', 'Shawwal', "Dhu al-Qi'dah", 'Dhu al-Hijjah',
+  ];
+
+  static const List<String> _hijriMonthsAr = [
+    'مُحَرَّم', 'صَفَر', 'رَبِيعُ الأَوَّل', 'رَبِيعُ الثَّانِي',
+    'جُمَادَى الأُولَى', 'جُمَادَى الآخِرَة', 'رَجَب', 'شَعْبَان',
+    'رَمَضَان', 'شَوَّال', 'ذُو القَعْدَة', 'ذُو الحِجَّة',
+  ];
+
+  // ───────────────────────────────────────── Core Hijri algorithm ───────
+  /// Converts a Gregorian [date] to a Hijri (Umm al-Qura / Kuwaiti tabular)
+  /// date.  Returns (year, month[1-12], day).
+  ///
+  /// Accuracy: ±1 day approximation.  Not suitable as a religious authority.
   static ({int year, int month, int day}) toHijri(DateTime date) {
     final d = date.day;
     final m = date.month;
@@ -71,12 +82,39 @@ class AppDateUtils {
     return (year: year, month: month, day: day);
   }
 
+  // ───────────────────────────────────────── Formatted strings ──────────
   /// Formats a Hijri date in Turkish, e.g. "15 Ramazan 1445".
-  static String formatHijriTr(DateTime date) {
+  /// Kept for backward compatibility; prefer [formatHijriLocalized].
+  static String formatHijriTr(DateTime date) =>
+      _formatHijri(date, _hijriMonthsTr);
+
+  /// Formats a Hijri date in English, e.g. "15 Ramadan 1445".
+  static String formatHijriEn(DateTime date) =>
+      _formatHijri(date, _hijriMonthsEn);
+
+  /// Formats a Hijri date in Arabic, e.g. "15 رمضان 1445".
+  static String formatHijriAr(DateTime date) =>
+      _formatHijri(date, _hijriMonthsAr);
+
+  /// Formats a Hijri date using the appropriate locale.
+  ///
+  /// [locale] should be an IETF language tag such as "tr", "en", "ar".
+  /// Falls back to Turkish for unrecognised locales.
+  static String formatHijriLocalized(DateTime date, String locale) {
+    final lang = locale.split('_').first.toLowerCase();
+    switch (lang) {
+      case 'en':
+        return formatHijriEn(date);
+      case 'ar':
+        return formatHijriAr(date);
+      default:
+        return formatHijriTr(date);
+    }
+  }
+
+  static String _formatHijri(DateTime date, List<String> months) {
     final h = toHijri(date);
-    final monthName = (h.month >= 1 && h.month <= 12)
-        ? _hijriMonthsTr[h.month - 1]
-        : '';
+    final monthName = (h.month >= 1 && h.month <= 12) ? months[h.month - 1] : '';
     return '${h.day} $monthName ${h.year}';
   }
 

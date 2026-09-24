@@ -305,6 +305,107 @@ class AppLocalizationsEn extends AppLocalizations {
   String get locationUsingCoordinates => 'Using coordinates';
 
   @override
+  String get homeToday => 'Today';
+
+  @override
+  String get homeTomorrow => 'Tomorrow';
+
+  @override
+  String get homePrayerTimes => 'Prayer Times';
+
+  @override
+  String get homeNextPrayer => 'Next Prayer';
+
+  @override
+  String get homeTimeRemaining => 'Time Remaining';
+
+  @override
+  String get homeGregorianDate => 'Date';
+
+  @override
+  String get homeHijriDate => 'Hijri Date';
+
+  @override
+  String get homeLocation => 'Location';
+
+  @override
+  String get homeChangeLocation => 'Change Location';
+
+  @override
+  String get homeRefresh => 'Refresh';
+
+  @override
+  String get homeLastUpdated => 'Last Updated';
+
+  @override
+  String get homeLoading => 'Calculating prayer times...';
+
+  @override
+  String get homeErrorPrayerCalc => 'Could not calculate prayer times.';
+
+  @override
+  String get homeErrorTimezone =>
+      'Timezone for location could not be determined.';
+
+  @override
+  String get homeErrorMissingLocation => 'Location required for prayer times.';
+
+  @override
+  String get homeSetLocation => 'Set Location';
+
+  @override
+  String get homeComingSoon => 'Coming Soon';
+
+  @override
+  String get homeQibla => 'Qibla';
+
+  @override
+  String get homeNearbyMosques => 'Nearby Mosques';
+
+  @override
+  String get homeRamadan => 'Ramadan';
+
+  @override
+  String get homeSunriseLabel => 'Sunrise';
+
+  @override
+  String get homeSunriseNote => '(Not an obligatory prayer)';
+
+  @override
+  String get homeRetry => 'Try Again';
+
+  @override
+  String homeNextPrayerIn(String name) {
+    return '$name';
+  }
+
+  @override
+  String get homePrayerFajr => 'Fajr';
+
+  @override
+  String get homePrayerSunrise => 'Sunrise';
+
+  @override
+  String get homePrayerDhuhr => 'Dhuhr';
+
+  @override
+  String get homePrayerAsr => 'Asr';
+
+  @override
+  String get homePrayerMaghrib => 'Maghrib';
+
+  @override
+  String get homePrayerIsha => 'Isha';
+
+  @override
+  String get homeSettings => 'Settings';
+
+  @override
+  String homeTimezoneUsed(String id) {
+    return 'Timezone: $id';
+  }
+
+  @override
   String get phase1Placeholder =>
       'This screen will be implemented in a later phase.';
 }

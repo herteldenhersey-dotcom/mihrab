@@ -16,11 +16,19 @@
   "timeRemaining": "Kalan Süre",
   "notificationPrayerTitle": "{prayer} vakti",
   "@notificationPrayerTitle": {
-    "placeholders": { "prayer": { "type": "String" } }
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
   },
   "notificationPrayerBody": "{prayer} namazı vakti girdi.",
   "@notificationPrayerBody": {
-    "placeholders": { "prayer": { "type": "String" } }
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
   },
   "onboardingWelcomeTitle": "MİHRAB'a Hoş Geldiniz",
   "onboardingWelcomeBody": "Çevrimdışı namaz ve ibadet arkadaşınız.",
@@ -99,5 +107,51 @@
   "locationChange": "Konumu değiştir",
   "locationAddressUnavailable": "Adres belirlenemedi",
   "locationUsingCoordinates": "Koordinatlar kullanılıyor",
+  "homeToday": "Bugün",
+  "homeTomorrow": "Yarın",
+  "homePrayerTimes": "Namaz Vakitleri",
+  "homeNextPrayer": "Sonraki Namaz",
+  "homeTimeRemaining": "Kalan Süre",
+  "homeGregorianDate": "Gregoryen Tarih",
+  "homeHijriDate": "Hicri Tarih",
+  "homeLocation": "Konum",
+  "homeChangeLocation": "Konumu Değiştir",
+  "homeRefresh": "Yenile",
+  "homeLastUpdated": "Son Güncelleme",
+  "homeLoading": "Namaz vakitleri hesaplanıyor...",
+  "homeErrorPrayerCalc": "Namaz vakitleri hesaplanamadı.",
+  "homeErrorTimezone": "Konum saat dilimi belirlenemedi.",
+  "homeErrorMissingLocation": "Namaz vakitleri için konum gereklidir.",
+  "homeSetLocation": "Konum Ayarla",
+  "homeComingSoon": "Yakında",
+  "homeQibla": "Kıble",
+  "homeNearbyMosques": "Yakın Camiler",
+  "homeRamadan": "Ramazan",
+  "homeSunriseLabel": "Güneş Doğuşu",
+  "homeSunriseNote": "(Farz namaz değil)",
+  "homeRetry": "Tekrar Dene",
+  "homeNextPrayerIn": "{name} vakti",
+  "@homeNextPrayerIn": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homePrayerFajr": "İmsak",
+  "homePrayerSunrise": "Güneş",
+  "homePrayerDhuhr": "Öğle",
+  "homePrayerAsr": "İkindi",
+  "homePrayerMaghrib": "Akşam",
+  "homePrayerIsha": "Yatsı",
+  "homeSettings": "Ayarlar",
+  "homeTimezoneUsed": "Saat dilimi: {id}",
+  "@homeTimezoneUsed": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
   "phase1Placeholder": "Bu ekran ilerleyen bir fazda uygulanacaktır."
 }

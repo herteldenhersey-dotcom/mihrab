@@ -16,11 +16,19 @@
   "timeRemaining": "الوقت المتبقي",
   "notificationPrayerTitle": "وقت {prayer}",
   "@notificationPrayerTitle": {
-    "placeholders": { "prayer": { "type": "String" } }
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
   },
   "notificationPrayerBody": "حان وقت صلاة {prayer}.",
   "@notificationPrayerBody": {
-    "placeholders": { "prayer": { "type": "String" } }
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
   },
   "onboardingWelcomeTitle": "مرحبًا بك في المحراب",
   "onboardingWelcomeBody": "رفيقك للصلاة والعبادة دون اتصال.",
@@ -99,5 +107,51 @@
   "locationChange": "تغيير الموقع",
   "locationAddressUnavailable": "تعذّر تحديد العنوان",
   "locationUsingCoordinates": "استخدام الإحداثيات",
+  "homeToday": "اليوم",
+  "homeTomorrow": "غداً",
+  "homePrayerTimes": "مواقيت الصلاة",
+  "homeNextPrayer": "الصلاة القادمة",
+  "homeTimeRemaining": "الوقت المتبقي",
+  "homeGregorianDate": "التاريخ",
+  "homeHijriDate": "التاريخ الهجري",
+  "homeLocation": "الموقع",
+  "homeChangeLocation": "تغيير الموقع",
+  "homeRefresh": "تحديث",
+  "homeLastUpdated": "آخر تحديث",
+  "homeLoading": "جارٍ حساب مواقيت الصلاة...",
+  "homeErrorPrayerCalc": "تعذّر حساب مواقيت الصلاة.",
+  "homeErrorTimezone": "تعذّر تحديد المنطقة الزمنية للموقع.",
+  "homeErrorMissingLocation": "يلزم تحديد الموقع لمواقيت الصلاة.",
+  "homeSetLocation": "تحديد الموقع",
+  "homeComingSoon": "قريبًا",
+  "homeQibla": "القبلة",
+  "homeNearbyMosques": "المساجد القريبة",
+  "homeRamadan": "رمضان",
+  "homeSunriseLabel": "شروق الشمس",
+  "homeSunriseNote": "(ليست فريضة)",
+  "homeRetry": "إعادة المحاولة",
+  "homeNextPrayerIn": "{name}",
+  "@homeNextPrayerIn": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homePrayerFajr": "الفجر",
+  "homePrayerSunrise": "الشروق",
+  "homePrayerDhuhr": "الظهر",
+  "homePrayerAsr": "العصر",
+  "homePrayerMaghrib": "المغرب",
+  "homePrayerIsha": "العشاء",
+  "homeSettings": "الإعدادات",
+  "homeTimezoneUsed": "المنطقة الزمنية: {id}",
+  "@homeTimezoneUsed": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
   "phase1Placeholder": "سيتم تنفيذ هذه الشاشة في مرحلة لاحقة."
 }

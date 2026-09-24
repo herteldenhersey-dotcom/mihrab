@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/feedback/presentation/pages/feedback_page.dart';
+import '../../features/home/presentation/cubit/home_cubit.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/jummah/presentation/pages/jummah_page.dart';
 import '../../features/mosques/presentation/pages/mosques_page.dart';
@@ -10,6 +12,7 @@ import '../../features/prayer_times/presentation/pages/prayer_times_page.dart';
 import '../../features/qibla/presentation/pages/qibla_page.dart';
 import '../../features/ramadan/presentation/pages/ramadan_page.dart';
 import '../../features/settings/presentation/pages/settings_page.dart';
+import '../../injection.dart';
 import '../../localization/app_localizations.dart';
 import 'app_routes.dart';
 
@@ -38,7 +41,10 @@ GoRouter buildAppRouter({required bool onboardingComplete}) {
             routes: [
               GoRoute(
                 path: AppRoutes.home,
-                builder: (context, state) => const HomePage(),
+                builder: (context, state) => BlocProvider<HomeCubit>(
+                  create: (_) => getIt<HomeCubit>(),
+                  child: const HomePage(),
+                ),
               ),
             ],
           ),
@@ -87,6 +93,11 @@ GoRouter buildAppRouter({required bool onboardingComplete}) {
       GoRoute(
         path: AppRoutes.feedback,
         builder: (context, state) => const FeedbackPage(),
+      ),
+      // Location setup — pushes user back to onboarding to re-select location.
+      GoRoute(
+        path: AppRoutes.locationSetup,
+        builder: (context, state) => const OnboardingPage(),
       ),
     ],
   );

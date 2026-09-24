@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/network/connectivity_service.dart';
 import 'core/network/dio_client.dart';
+import 'core/services/clock.dart';
+import 'core/services/location_change_notifier.dart';
 import 'data/datasources/local/hive_adapters.dart';
 import 'data/datasources/local/hive_boxes.dart';
 import 'data/datasources/local/hive_feedback_local.dart';
@@ -14,6 +16,7 @@ import 'data/datasources/local/hive_mosque_cache.dart';
 import 'data/datasources/local/shared_prefs_settings.dart';
 import 'data/datasources/remote/overpass_api_datasource.dart';
 import 'data/providers/adhan_prayer_time_provider.dart';
+import 'data/repositories/coordinate_timezone_repository.dart';
 import 'data/repositories/geocoding_location_search_repository.dart';
 import 'data/repositories/geolocator_location_repository.dart';
 import 'data/repositories/hive_settings_repository.dart';
@@ -33,12 +36,14 @@ import 'domain/repositories/location_repository.dart';
 import 'domain/repositories/location_search_repository.dart';
 import 'domain/repositories/mosque_repository.dart';
 import 'domain/repositories/settings_repository.dart';
+import 'domain/repositories/timezone_repository.dart';
 import 'domain/usecases/get_nearby_mosques_usecase.dart';
 import 'domain/usecases/get_next_prayer_usecase.dart';
 import 'domain/usecases/get_prayer_times_usecase.dart';
 import 'domain/usecases/get_qibla_direction_usecase.dart';
 import 'domain/usecases/schedule_notifications_usecase.dart';
 import 'domain/usecases/submit_feedback_usecase.dart';
+import 'features/home/presentation/cubit/home_cubit.dart';
 import 'localization/cubit/locale_cubit.dart';
 
 /// Global service locator.
@@ -92,7 +97,11 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton<LocationSearchRepository>(
         () => GeocodingLocationSearchRepository())
     ..registerLazySingleton<SettingsRepository>(
-        () => HiveSettingsRepository(getIt<SharedPrefsSettings>()));
+        () => HiveSettingsRepository(getIt<SharedPrefsSettings>()))
+    ..registerLazySingleton<TimezoneRepository>(
+        () => CoordinateTimezoneRepository(prefs))
+    ..registerLazySingleton<LocationChangeNotifier>(
+        () => LocationChangeNotifier());
 
   // --- Services ----------------------------------------------------------
   getIt
@@ -142,4 +151,16 @@ Future<void> configureDependencies() async {
               getIt<GetPrayerTimesUseCase>(),
               getIt<PrayerNotificationScheduler>(),
             ));
+
+  // --- Feature Cubits ----------------------------------------------------
+  // HomeCubit is a factory (new instance per navigation to Home) so the
+  // timer lifecycle aligns with the widget tree.  Clock defaults to
+  // SystemClock; tests substitute a FakeClock via the constructor.
+  getIt.registerFactory<HomeCubit>(() => HomeCubit(
+        settings: getIt<SettingsRepository>(),
+        getPrayerTimes: getIt<GetPrayerTimesUseCase>(),
+        timezoneRepo: getIt<TimezoneRepository>(),
+        locationNotifier: getIt<LocationChangeNotifier>(),
+        clock: const SystemClock(),
+      ));
 }
