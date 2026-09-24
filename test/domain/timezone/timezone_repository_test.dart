@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_relative_lib_imports
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mihrab/data/repositories/coordinate_timezone_repository.dart';
-import 'package:mihrab/domain/repositories/timezone_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Tests 1–8 — Timezone resolution strategy (spec §30).

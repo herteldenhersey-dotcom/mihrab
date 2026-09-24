@@ -607,4 +607,172 @@ Before beginning Phase 5, the following should be resolved:
 
 ---
 
+## 41. Final Validation Sonuçları (Phase 4 Final Validation)
+
+Bu bölüm, Phase 4'ün nihai onayı öncesinde yürütülen son doğrulama turunun
+sonuçlarını içerir. Tüm otomatik testler, statik analiz ve Android derlemesi
+temiz makine üzerinde yeniden çalıştırılmıştır.
+
+### 41.1 `flutter test` — Nihai Sonuç
+
+| Metrik | Değer |
+|---|---|
+| Keşfedilen toplam test | **175** |
+| Başarılı (passed) | **155** |
+| Başarısız (failed) | **0** |
+| Atlanan (skipped) | **20** |
+
+- Tüm Phase 1–4 testleri dahildir.
+- 20 atlanan testin tamamı, Diyanet resmî referans verisi henüz
+  doldurulmadığı için `skip:` işaretlidir (bkz. Bölüm 32). Phase 4'te **yeni
+  atlama eklenmemiştir**.
+- Log: `docs/phase4/flutter_test.log`
+
+### 41.2 `flutter analyze` — Nihai Sonuç
+
+| Seviye | Adet |
+|---|---|
+| error (hata) | **0** |
+| warning (uyarı) | **0** |
+| info (bilgi) | **29** |
+
+**Info dökümü:**
+- **25 × `deprecated_member_use`** — `withOpacity()` kullanımı (Flutter
+  `.withValues()` öneriyor). Bu, Phase 1–3 boyunca tutarlı olan proje geneli
+  Material 3 teknik borcudur; davranışsal etkisi yoktur. Tek bir renk-yardımcı
+  katmanında topluca çözülmesi Phase 5+ için önerilir.
+- **4 × `prefer_initializing_formals`** — `home_cubit.dart` içinde public
+  adlandırılmış parametrelerin private alanlara atanması deseni. Bu desen
+  bilinçli/idiyomatiktir (public API ≠ private alan adı) ve düzeltilmesi
+  kapsüllemeyi bozacağından **kasıtlı olarak bırakılmıştır**.
+- 0 hata / 0 uyarı hedefi karşılanmıştır.
+- Log: `docs/phase4/flutter_analyze.log`
+
+> Not: Bu tur içinde yapılan analiz temizliği (gereksiz cast kaldırma,
+> `const` yapıcılar, `??=`, gereksiz `!` non-null assertion kaldırma, kullanılmayan
+> import/değişken temizliği) sonucu uyarı sayısı 14 → 0'a düşürülmüştür.
+
+### 41.3 `flutter build apk --debug` — Nihai Sonuç
+
+| Metrik | Değer |
+|---|---|
+| Sonuç | **BAŞARILI ✓ Built** |
+| Çıkış kodu | 0 |
+| APK boyutu | ~185 MB (debug) |
+| APK yolu | `build/app/outputs/flutter-apk/app-debug.apk` |
+
+- Log: `docs/phase4/flutter_build_apk.log`
+- Not: Debug APK'nın büyük olması normaldir (debug sembolleri + tüm ABI'lar).
+  Release derlemesi (Phase 5) `--split-per-abi` ile önemli ölçüde küçülecektir.
+
+### 41.4 Timezone Mimarisi Doğrulaması
+
+`CoordinateTimezoneRepository` gözden geçirildi. Mimari **yeniden
+tasarlanmadı** — yalnızca gerçek doğruluk riski taşıyan noktalar incelendi.
+
+**Çözümleme önceliği (HomeCubit `_loadForLocation` içinde):**
+1. **`AppLocation.timezoneId` (kalıcı, tam IANA)** — mevcutsa doğrudan
+   kullanılır. Bu, spesifikasyonun "mümkün olduğunda bilinen/kalıcı tam IANA
+   timezone tercih edilsin" gereksinimini karşılar. **Tam kimlik her zaman
+   önce gelir.**
+2. **`resolveFromCountryCode(country, longitude)`** — ISO-3166-1-alpha-2 ülke
+   kodu → IANA tablosu. Tek-zamanlı ülkeler için (~150 ülke) tam eşleşme;
+   çok-zamanlı ülkeler için (ABD, Kanada, Rusya, Avustralya, Brezilya,
+   Endonezya) **boylam-bandı** ile en uygun zaman dilimi seçilir.
+3. **`resolveTimezone(lat,lng)` → `_longitudeFallback(longitude)`** — ülke kodu
+   bilinmediğinde (okyanus koordinatları, kod içermeyen jeokodlama) **son
+   çare** olarak boylam/15 UTC-offset yaklaşımı.
+4. **`getCachedTimezone()`** — SharedPreferences önbelleğinden son bilinen değer.
+
+**Boylam-bandı fallback'inin doğruluk sınırları:**
+- **Ne zaman kullanılır:** Yalnızca (a) çok-zamanlı bir ülkede şehir seçimi
+  veya (b) ülke kodu hiç çözümlenemediğinde. Kalıcı tam IANA kimliği varsa
+  **asla** kullanılmaz.
+- **Belirsiz olabilecek bölgeler:** Çok-zamanlı ülkelerin zaman dilimi
+  sınırlarına yakın şehirler (örn. ABD'de Indiana/Kentucky bölünmeleri,
+  Avustralya'da Broken Hill, Rusya'da bölge sınırları); okyanus/uluslararası
+  sular koordinatları; küçük/ihtilaflı bölgeler ve komşu ülke sınırındaki
+  yerleşimler. Bu durumlarda komşu bir zaman dilimi seçilebilir (tipik hata:
+  ±1 saat).
+- **Tam IANA belirlenemediğinde ne olur:** Uygulama **çökmez** — sırasıyla
+  ülke-kodu tablosu → boylam yaklaşımı → önbellek → (hepsi başarısızsa) UTC
+  varsayılanına düşülür ve namaz vakitleri yine de hesaplanır. Kullanıcıya
+  yanlış zaman diliminde vakit gösterme riski, yalnızca yukarıdaki sınır
+  durumlarıyla sınırlıdır.
+
+**Sonuç:** Kalıcı tam IANA kimliği önce tercih edildiğinden ve yaygın
+şehirlerin tamamı ülke-kodu tablosuyla doğru çözümlendiğinden, mevcut mimari
+V1 için yeterlidir. **Düzeltme gerektiren gerçek bir doğruluk hatası
+bulunmamıştır.** İleride kullanıcı tarafından manuel zaman dilimi seçimi
+(Settings) ve gerçek bir enlem/boylam→IANA poligon veri seti (örn. `tz_world`)
+teknik borç olarak kaydedilmiştir (bkz. Bölüm 37).
+
+### 41.5 Namaz Vakti Doğrulama Durumu
+
+> **ÖNEMLİ AYRIM:** Bu projede yapılan doğrulama, **AlAdhan Method 13
+> uyumluluğudur — resmî Diyanet doğrulaması DEĞİLDİR.**
+
+- `adhan_prayer_time_provider_test.dart`, İstanbul (2024-03-15) için hesaplanan
+  vakitleri **AlAdhan API Method 13** referansıyla ±2 dakika toleransında
+  karşılaştırır. Bu yalnızca AlAdhan'ın Diyanet metodolojisi uygulamasıyla
+  **uyumluluğu** gösterir.
+- **Resmî Diyanet doğrulaması ayrı ve bekleyen bir görevdir.** Bunun için:
+  - Hedef şehirler: **İstanbul, Ankara, Diyarbakır, Trabzon, Antalya**
+  - Kapsam: **4 mevsim** (ekinoks/gündönümü civarı tarihler)
+  - Referans: Diyanet'in resmî yayınlanmış namaz vakti takvimi
+  - Durum: **BEKLEMEDE** — resmî Diyanet referans değerleri henüz mevcut
+    olmadığından bu doğrulama yapılmamıştır. Bu **Phase 4'ü bloke etmez**,
+    ancak sınırlama belgelenmiş olarak kalır.
+- **Uydurma/tahmini Diyanet değeri kullanılmamıştır.** İlgili 20 test,
+  gerçek referans verisi doldurulana kadar bilinçli olarak `skip:`
+  işaretlidir (bkz. Bölüm 31–32).
+- Ayrı resmî-Diyanet doğrulama TODO'su: bkz. Bölüm 40.1 ve
+  `REAL_DEVICE_TEST_CHECKLIST.md`.
+
+### 41.6 Gerçek Cihaz Doğrulaması Durumu
+
+- `REAL_DEVICE_TEST_CHECKLIST.md` (51 madde) **BEKLEMEDE** olarak korunmuştur.
+- **Hiçbir yapılmamış cihaz testi başarılı olarak işaretlenmemiştir.**
+- Doğrulama seviyeleri ayrımı:
+  - **Otomatik PASS:** 155 birim/widget testi (bu makinede doğrulandı) ✓
+  - **Emülatör PASS:** Uygulanmadı — TEST EDİLMEDİ
+  - **Fiziksel cihaz PASS:** Uygulanmadı — TEST EDİLMEDİ (BLOKE: fiziksel
+    Android/iOS cihaz erişimi yok)
+  - **APK derlemesi:** BAŞARILI ✓ (kurulum/çalıştırma cihazda doğrulanmadı)
+
+### 41.7 Regresyon Kapsamı (Otomatik Test Onayı)
+
+Aşağıdaki senaryoların tamamı için otomatik test kapsamı **mevcut ve geçer**
+durumdadır:
+
+| Senaryo | Test konumu |
+|---|---|
+| Bugün/yarın vakit hesabı | `home_cubit_test.dart`, `prayer_time_utils_test.dart` |
+| Yatsı sonrası → yarının İmsak'ı | `prayer_time_utils_test.dart` (T), `get_next_prayer_usecase_test.dart`, `home_cubit_test.dart` T12/T13 |
+| Güneş (Sunrise) "Sıradaki Vakit"ten hariç | `home_widget_test.dart` T31 |
+| Geri sayım vakit anı sınırı | `home_cubit_test.dart` T14/T15/T23–T28 |
+| Gece yarısı devri (rollover) | `home_cubit_test.dart` T17/T28 |
+| Yeniden başlatmadan konum değişikliği | `home_location_change_test.dart` T41–T46 |
+| Seçili konum zaman dilimi (cihaz değil) | `home_cubit_test.dart` FakeTimezoneRepository |
+| Çevrimdışı önbellekli çalışma | `home_offline_test.dart` T47–T49 |
+| Konum eksik durumu | `home_cubit_test.dart` (HomeMissingLocation) |
+| TR/EN/AR yerelleştirme | `home_widget_test.dart` T34/T35/T37/T38 |
+| Arapça RTL | `home_widget_test.dart` T36 |
+
+### 41.8 Nihai Karar
+
+- Otomatik testler: **155/155 geçti** (20 bilinçli skip) ✓
+- Statik analiz: **0 hata / 0 uyarı** ✓
+- Android debug APK: **başarıyla derlendi** ✓
+- Timezone mimarisi: gözden geçirildi, gerçek doğruluk hatası yok, sınırlar
+  belgelendi ✓
+- Namaz vakti doğrulaması: AlAdhan uyumluluğu doğrulandı; resmî Diyanet
+  doğrulaması ayrı TODO olarak belgelendi ✓
+- Gerçek cihaz testleri: bekleyen olarak korundu, yanlış PASS işareti yok ✓
+
+**PHASE 4 FINAL VALIDATION — tüm otomatik doğrulama ve Android derlemesi
+başarılı.**
+
+---
+
 *End of Phase 4 Completion Report.*

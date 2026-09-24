@@ -1,4 +1,3 @@
-import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mihrab/core/services/clock.dart';
 import 'package:mihrab/core/services/location_change_notifier.dart';
@@ -107,8 +106,7 @@ HomeCubit _buildCubit({
 }) {
   final fakeSettings = settings ?? FakeSettingsRepository();
   if (savedLocation != null && fakeSettings is FakeSettingsRepository) {
-    (fakeSettings as FakeSettingsRepository)
-      ..saveLocation(savedLocation);
+    fakeSettings.saveLocation(savedLocation);
   }
   final p = provider ?? FakePrayerTimeProvider();
   final usecase = GetPrayerTimesUseCase(p);
@@ -255,7 +253,6 @@ void main() {
   // ── T18: Manual offsets appear in displayed times ─────────────────────────
   test('T18: calculation settings with manual offsets are forwarded to provider', () async {
     int callCount = 0;
-    CalculationSettings? receivedSettings;
     final provider = FakePrayerTimeProvider()
       ..builder = (date) {
         callCount++;

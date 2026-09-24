@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   // ── Loading ─────────────────────────────────────────────────────────────
   Widget _buildLoading(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     return Center(
       child: Column(
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   // ── Loaded ──────────────────────────────────────────────────────────────
   Widget _buildLoaded(BuildContext context, HomeLoaded state) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
 
@@ -206,7 +206,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   // ── Missing location ─────────────────────────────────────────────────────
   Widget _buildMissingLocation(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
 
     return Center(
@@ -240,7 +240,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   // ── Failure ─────────────────────────────────────────────────────────────
   Widget _buildFailure(BuildContext context, String message) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
 
     final displayMsg = switch (message) {

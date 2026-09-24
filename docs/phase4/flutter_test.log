@@ -1,0 +1,199 @@
+00:00 +0: loading /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart
+00:00 +0: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: AdhanPrayerTimeProvider — AlAdhan Method 13 compatibility (Istanbul 2024-03-15) Fajr within ±2 min of AlAdhan M13
+00:00 +1: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: AdhanPrayerTimeProvider — AlAdhan Method 13 compatibility (Istanbul 2024-03-15) Sunrise within ±2 min of AlAdhan M13
+00:00 +2: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: AdhanPrayerTimeProvider — AlAdhan Method 13 compatibility (Istanbul 2024-03-15) Dhuhr within ±2 min of AlAdhan M13
+00:00 +3: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: AdhanPrayerTimeProvider — AlAdhan Method 13 compatibility (Istanbul 2024-03-15) Asr within ±2 min of AlAdhan M13
+00:00 +4: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: AdhanPrayerTimeProvider — AlAdhan Method 13 compatibility (Istanbul 2024-03-15) Maghrib within ±2 min of AlAdhan M13
+00:00 +5: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: AdhanPrayerTimeProvider — AlAdhan Method 13 compatibility (Istanbul 2024-03-15) Isha within ±2 min of AlAdhan M13
+00:00 +6: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: ManualOffsets reconciliation mechanism applying a per-prayer offset shifts times so a hypothetical residual delta is corrected to zero
+00:00 +7: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: ManualOffsets reconciliation mechanism zero offsets are a no-op
+00:00 +8: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: Method & madhab mapping Hanafi asr is later than standard (shafi) asr
+00:00 +9: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: Method & madhab mapping Qibla direction from Istanbul points roughly south-east (~150–160°)
+00:00 +10: /home/ubuntu/github_repos/mihrab/test/data/providers/adhan_prayer_time_provider_test.dart: Method & madhab mapping diyanet maps to adhan CalculationMethod.turkey
+00:00 +11: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: validation matrix has the full 5 cities × 4 seasons = 20 cases
+00:00 +12: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) İstanbul — Kış (2024-01-15)
+  Official Diyanet reference data not yet provided for "İstanbul — Kış (2024-01-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~1: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) İstanbul — İlkbahar (2024-04-15)
+  Official Diyanet reference data not yet provided for "İstanbul — İlkbahar (2024-04-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~2: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) İstanbul — Yaz (2024-07-15)
+  Official Diyanet reference data not yet provided for "İstanbul — Yaz (2024-07-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~3: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) İstanbul — Sonbahar (2024-10-15)
+  Official Diyanet reference data not yet provided for "İstanbul — Sonbahar (2024-10-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~4: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Ankara — Kış (2024-01-15)
+  Official Diyanet reference data not yet provided for "Ankara — Kış (2024-01-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~5: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Ankara — İlkbahar (2024-04-15)
+  Official Diyanet reference data not yet provided for "Ankara — İlkbahar (2024-04-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~6: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Ankara — Yaz (2024-07-15)
+  Official Diyanet reference data not yet provided for "Ankara — Yaz (2024-07-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~7: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Ankara — Sonbahar (2024-10-15)
+  Official Diyanet reference data not yet provided for "Ankara — Sonbahar (2024-10-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~8: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Diyarbakır — Kış (2024-01-15)
+  Official Diyanet reference data not yet provided for "Diyarbakır — Kış (2024-01-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~9: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Diyarbakır — İlkbahar (2024-04-15)
+  Official Diyanet reference data not yet provided for "Diyarbakır — İlkbahar (2024-04-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~10: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Diyarbakır — Yaz (2024-07-15)
+  Official Diyanet reference data not yet provided for "Diyarbakır — Yaz (2024-07-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~11: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Diyarbakır — Sonbahar (2024-10-15)
+  Official Diyanet reference data not yet provided for "Diyarbakır — Sonbahar (2024-10-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~12: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Trabzon — Kış (2024-01-15)
+  Official Diyanet reference data not yet provided for "Trabzon — Kış (2024-01-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~13: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Trabzon — İlkbahar (2024-04-15)
+  Official Diyanet reference data not yet provided for "Trabzon — İlkbahar (2024-04-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~14: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Trabzon — Yaz (2024-07-15)
+  Official Diyanet reference data not yet provided for "Trabzon — Yaz (2024-07-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~15: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Trabzon — Sonbahar (2024-10-15)
+  Official Diyanet reference data not yet provided for "Trabzon — Sonbahar (2024-10-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~16: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Antalya — Kış (2024-01-15)
+  Official Diyanet reference data not yet provided for "Antalya — Kış (2024-01-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~17: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Antalya — İlkbahar (2024-04-15)
+  Official Diyanet reference data not yet provided for "Antalya — İlkbahar (2024-04-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~18: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Antalya — Yaz (2024-07-15)
+  Official Diyanet reference data not yet provided for "Antalya — Yaz (2024-07-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~19: /home/ubuntu/github_repos/mihrab/test/data/providers/diyanet_official_validation_test.dart: Official Diyanet validation (±2 min) Antalya — Sonbahar (2024-10-15)
+  Official Diyanet reference data not yet provided for "Antalya — Sonbahar (2024-10-15)" — TODO. Fill _DiyanetCase.expected to enable.
+00:00 +12 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: (setUpAll)
+00:00 +12 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: LocalFeedbackRepository.submit successful mailto handoff → handoffInitiated
+00:00 +13 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: LocalFeedbackRepository.submit launcher returning false → failed (stays queued)
+00:00 +14 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: LocalFeedbackRepository.submit launcher throwing → failed (persisted, not lost)
+00:00 +15 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: LocalFeedbackRepository.submit mailto URI targets the configured feedback email
+00:00 +16 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/location_persistence_test.dart: saveLocation → getSavedLocation round-trips every field
+00:00 +17 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/location_persistence_test.dart: saveLocation → getSavedLocation round-trips every field
+00:00 +18 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: LocalFeedbackRepository.flushQueue leaves items queued when handoff keeps failing
+00:00 +19 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: LocalFeedbackRepository.flushQueue leaves items queued when handoff keeps failing
+00:00 +20 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: LocalFeedbackRepository.flushQueue leaves items queued when handoff keeps failing
+00:00 +21 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/location_persistence_test.dart: onboarding completion persists across restart
+00:00 +22 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: legacy JSON compatibility legacy submitted=true reads as handoffInitiated
+00:00 +23 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: legacy JSON compatibility legacy submitted=true reads as handoffInitiated
+00:00 +24 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: legacy JSON compatibility legacy submitted=false reads as pending
+00:00 +25 ~20: /home/ubuntu/github_repos/mihrab/test/data/repositories/local_feedback_repository_test.dart: (tearDownAll)
+00:00 +25 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getNextPrayer before Fajr → returns Fajr (today)
+00:00 +26 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getNextPrayer between Dhuhr and Asr → returns Asr
+00:00 +27 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getNextPrayer exactly at a prayer time → returns the NEXT prayer (strictly after)
+00:00 +28 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getNextPrayer after Isha with tomorrow provided → tomorrow Fajr
+00:00 +29 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getNextPrayer after Isha without tomorrow → today Fajr advanced by one day
+00:00 +30 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getCurrentPrayer before Fajr → null
+00:00 +31 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getCurrentPrayer after Dhuhr, before Asr → Dhuhr
+00:00 +32 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getCurrentPrayer after Isha → Isha
+00:00 +33 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getCountdown / formatCountdown positive difference
+00:00 +34 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getCountdown / formatCountdown past target clamps to zero
+00:00 +35 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/prayer_time_utils_test.dart: getCountdown / formatCountdown formatCountdown pads HH:mm:ss
+00:00 +36 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/date_utils_test.dart: startOfDay / endOfDay startOfDay is midnight
+00:00 +37 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/date_utils_test.dart: startOfDay / endOfDay endOfDay is 23:59:59.999
+00:00 +38 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/date_utils_test.dart: isSameDay same calendar day, different times
+00:00 +39 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/date_utils_test.dart: isSameDay different day
+00:00 +40 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/date_utils_test.dart: Hijri conversion (Kuwaiti algorithm, ±1 day) 2024-03-11 falls in Ramadan 1445
+00:00 +41 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/date_utils_test.dart: Hijri conversion (Kuwaiti algorithm, ±1 day) isRamadan true inside Ramadan
+00:00 +42 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/date_utils_test.dart: Hijri conversion (Kuwaiti algorithm, ±1 day) isRamadan false outside Ramadan
+00:00 +43 ~20: /home/ubuntu/github_repos/mihrab/test/core/utils/date_utils_test.dart: Hijri conversion (Kuwaiti algorithm, ±1 day) formatHijriTr yields a non-empty Turkish month name
+00:00 +44 ~20: /home/ubuntu/github_repos/mihrab/test/domain/usecases/get_prayer_times_usecase_test.dart: forwards method & asr method from settings to provider
+00:00 +45 ~20: /home/ubuntu/github_repos/mihrab/test/domain/usecases/get_prayer_times_usecase_test.dart: applies manual offsets to the raw provider output
+00:00 +46 ~20: /home/ubuntu/github_repos/mihrab/test/domain/usecases/get_prayer_times_usecase_test.dart: zero offsets return raw times unchanged
+00:00 +47 ~20: /home/ubuntu/github_repos/mihrab/test/domain/usecases/get_next_prayer_usecase_test.dart: midday → returns Asr (today)
+00:00 +48 ~20: /home/ubuntu/github_repos/mihrab/test/domain/usecases/get_next_prayer_usecase_test.dart: post-Isha → returns tomorrow Fajr (uses tomorrow computation)
+00:01 +49 ~20: /home/ubuntu/github_repos/mihrab/test/domain/models/location_model_test.dart: AppLocation.isValidCoordinate accepts normal coordinates and boundaries
+00:01 +50 ~20: /home/ubuntu/github_repos/mihrab/test/domain/models/location_model_test.dart: AppLocation.isValidCoordinate rejects NaN and infinity
+00:01 +51 ~20: /home/ubuntu/github_repos/mihrab/test/domain/models/location_model_test.dart: AppLocation.isValidCoordinate rejects out-of-range coordinates
+00:01 +52 ~20: /home/ubuntu/github_repos/mihrab/test/domain/models/location_model_test.dart: AppLocation.isValidCoordinate hasValidCoordinates reflects the static check
+00:01 +53 ~20: /home/ubuntu/github_repos/mihrab/test/domain/models/location_model_test.dart: AppLocation.displayName joins available admin fields
+00:01 +54 ~20: /home/ubuntu/github_repos/mihrab/test/domain/models/location_model_test.dart: AppLocation.displayName falls back to coordinates when no address fields
+00:01 +55 ~20: /home/ubuntu/github_repos/mihrab/test/domain/models/location_model_test.dart: AppLocation JSON round-trip serializes and deserializes all fields including isManual
+00:01 +56 ~20: /home/ubuntu/github_repos/mihrab/test/domain/models/location_model_test.dart: AppLocation JSON round-trip fromJson defaults isManual to false when absent (backward compat)
+00:01 +57 ~20: /home/ubuntu/github_repos/mihrab/test/domain/models/location_model_test.dart: LocationSearchResult toAppLocation marks the location manual
+00:01 +58 ~20: /home/ubuntu/github_repos/mihrab/test/domain/models/location_model_test.dart: LocationSearchResult hasValidCoordinates catches malformed provider rows
+00:01 +59 ~20: /home/ubuntu/github_repos/mihrab/test/domain/timezone/timezone_repository_test.dart: T1: TR country code resolves to Europe/Istanbul
+00:01 +60 ~20: /home/ubuntu/github_repos/mihrab/test/domain/timezone/timezone_repository_test.dart: T2: US country code at New York longitude resolves to America/New_York
+00:01 +61 ~20: /home/ubuntu/github_repos/mihrab/test/domain/timezone/timezone_repository_test.dart: T3: GB country code resolves to Europe/London (DST-neutral ID)
+00:01 +62 ~20: /home/ubuntu/github_repos/mihrab/test/domain/timezone/timezone_repository_test.dart: T4: GB resolves to Europe/London (not Europe/Istanbul as device TZ)
+00:01 +63 ~20: /home/ubuntu/github_repos/mihrab/test/domain/timezone/timezone_repository_test.dart: T5: cacheTimezone persists and getCachedTimezone retrieves it
+00:01 +64 ~20: /home/ubuntu/github_repos/mihrab/test/domain/timezone/timezone_repository_test.dart: T6: cached timezone persists across repo re-instantiation
+00:01 +65 ~20: /home/ubuntu/github_repos/mihrab/test/domain/timezone/timezone_repository_test.dart: T7: SA country code resolves to Asia/Riyadh
+00:01 +66 ~20: /home/ubuntu/github_repos/mihrab/test/domain/timezone/timezone_repository_test.dart: T8: getCachedTimezone returns null when nothing is cached
+00:01 +67 ~20: /home/ubuntu/github_repos/mihrab/test/localization/locale_cubit_test.dart: LocaleCubit.load — stored language wins restores persisted tr on launch
+00:01 +68 ~20: /home/ubuntu/github_repos/mihrab/test/localization/locale_cubit_test.dart: LocaleCubit.load — stored language wins restores persisted en on launch
+00:01 +69 ~20: /home/ubuntu/github_repos/mihrab/test/localization/locale_cubit_test.dart: LocaleCubit.load — stored language wins restores persisted ar on launch
+00:01 +70 ~20: /home/ubuntu/github_repos/mihrab/test/localization/locale_cubit_test.dart: LocaleCubit.load — device-locale detection on fresh install adopts supported device language (ar) without persisting
+00:01 +71 ~20: /home/ubuntu/github_repos/mihrab/test/localization/locale_cubit_test.dart: LocaleCubit.load — device-locale detection on fresh install adopts supported device language (tr)
+00:01 +72 ~20: /home/ubuntu/github_repos/mihrab/test/localization/locale_cubit_test.dart: LocaleCubit.load — device-locale detection on fresh install falls back to English for an unsupported device locale
+00:01 +73 ~20: /home/ubuntu/github_repos/mihrab/test/localization/locale_cubit_test.dart: LocaleCubit.changeLocale — runtime switching + persistence switching TR → AR emits RTL and persists
+00:01 +74 ~20: /home/ubuntu/github_repos/mihrab/test/localization/locale_cubit_test.dart: LocaleCubit.changeLocale — runtime switching + persistence switching AR → EN restores LTR and persists
+00:01 +75 ~20: /home/ubuntu/github_repos/mihrab/test/localization/locale_cubit_test.dart: LocaleCubit.changeLocale — runtime switching + persistence choice survives a simulated app restart
+00:01 +76 ~20: /home/ubuntu/github_repos/mihrab/test/localization/locale_cubit_test.dart: LocaleCubit.changeLocale — runtime switching + persistence re-selecting the already-persisted language does not re-save
+00:01 +77 ~20: /home/ubuntu/github_repos/mihrab/test/localization/arb_keys_test.dart: all locales exist and are valid JSON
+00:01 +78 ~20: /home/ubuntu/github_repos/mihrab/test/localization/arb_keys_test.dart: all locales define identical message-key sets
+00:01 +79 ~20: /home/ubuntu/github_repos/mihrab/test/localization/arb_keys_test.dart: no message value is blank in any locale
+00:01 +80 ~20: /home/ubuntu/github_repos/mihrab/test/localization/arb_keys_test.dart: critical UI keys are present in every locale
+00:01 +81 ~20: /home/ubuntu/github_repos/mihrab/test/localization/arb_keys_test.dart: Arabic values contain Arabic-script characters (real translation)
+00:01 +82 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:01 +83 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:01 +84 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:01 +85 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:01 +86 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:01 +87 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +88 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +89 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +90 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +91 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +92 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +93 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +94 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +95 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +96 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +97 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +98 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +99 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +100 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +101 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +102 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +103 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +104 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +105 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +106 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +107 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +108 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +109 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Arabic renders right-to-left
+00:02 +110 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: Turkish renders left-to-right
+00:02 +111 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_cubit_test.dart: T9: before Fajr next prayer is Fajr
+00:02 +112 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: English renders left-to-right
+00:02 +113 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: English renders left-to-right
+00:02 +114 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: English renders left-to-right
+00:02 +115 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: English renders left-to-right
+00:02 +116 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: English renders left-to-right
+00:02 +117 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_cubit_test.dart: T14: countdown is a positive duration
+00:02 +118 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +119 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +120 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +121 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +122 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +123 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +124 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +125 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +126 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +127 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +128 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +129 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +130 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +131 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +132 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch TR → AR flips LTR to RTL without restart
+00:02 +133 ~20: /home/ubuntu/github_repos/mihrab/test/localization/rtl_widget_test.dart: runtime switch AR → EN restores RTL to LTR
+00:02 +134 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T29: loaded state renders all six prayer entries
+00:02 +135 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T29: loaded state renders all six prayer entries
+00:02 +136 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T29: loaded state renders all six prayer entries
+00:02 +137 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T29: loaded state renders all six prayer entries
+00:02 +138 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T29: loaded state renders all six prayer entries
+00:02 +139 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T29: loaded state renders all six prayer entries
+00:02 +140 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T29: loaded state renders all six prayer entries
+00:02 +141 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T29: loaded state renders all six prayer entries
+00:02 +142 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T29: loaded state renders all six prayer entries
+00:03 +143 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T29: loaded state renders all six prayer entries
+00:03 +144 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T30: next prayer type is reflected in rendered state
+00:03 +145 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T31: Sunrise appears in prayer list but is never the next prayer
+00:03 +146 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T32: HomeMissingLocation state shows missing_location widget
+00:03 +147 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T33: HomeFailure state shows failure message and retry widget
+00:03 +148 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T34: Turkish locale text direction is LTR
+00:03 +149 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T35: English locale text direction is LTR
+00:03 +150 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T36: Arabic locale text direction is RTL
+00:03 +151 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T37: switching locale from TR to AR does not throw
+00:03 +152 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T38: appLocalizations includes homeNextPrayer key
+00:03 +153 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T39: dark ThemeMode renders loaded state without exceptions
+00:03 +154 ~20: /home/ubuntu/github_repos/mihrab/test/features/home/home_widget_test.dart: T40: text scale 1.5× does not clip city name
+00:03 +155 ~20: All tests passed!

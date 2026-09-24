@@ -13,7 +13,7 @@ class QuickAccessRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
 
     final items = [
       _QuickItem(
@@ -64,7 +64,7 @@ class _QuickButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
 
@@ -134,7 +134,7 @@ class _QuickButton extends StatelessWidget {
   }
 
   void _showComingSoon(BuildContext context, String label) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('$label — ${l10n.homeComingSoon}'),

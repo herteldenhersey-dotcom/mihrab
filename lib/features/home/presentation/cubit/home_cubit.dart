@@ -150,7 +150,7 @@ class HomeCubit extends Cubit<HomeState> {
         // Use `is` check so test fakes (which only implement TimezoneRepository)
         // safely fall through to the coordinate-based path without a TypeError.
         if (_timezoneRepo is CoordinateTimezoneRepository) {
-          tzId = (_timezoneRepo as CoordinateTimezoneRepository)
+          tzId = _timezoneRepo
               .resolveFromCountryCode(location.country!, location.longitude);
         }
       }
@@ -159,9 +159,7 @@ class HomeCubit extends Cubit<HomeState> {
           location.latitude, location.longitude);
 
       // Last resort: use cached timezone.
-      if (tzId == null) {
-        tzId = await _timezoneRepo.getCachedTimezone();
-      }
+      tzId ??= await _timezoneRepo.getCachedTimezone();
 
       // Cache whatever we found.
       if (tzId != null) {
@@ -208,7 +206,7 @@ class HomeCubit extends Cubit<HomeState> {
         settings: calcSettings,
       );
     } catch (e) {
-      emit(HomeFailure('homePrayerCalcError'));
+      emit(const HomeFailure('homePrayerCalcError'));
       return;
     }
 
