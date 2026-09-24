@@ -252,7 +252,8 @@ void main() {
         GlobalCupertinoLocalizations.delegate,
       ],
       home: Builder(builder: (ctx) {
-        final l10n = AppLocalizations.of(ctx)!;
+        // ignore: unnecessary_non_null_assertion
+        final l10n = AppLocalizations.of(ctx)!; // always non-null inside MaterialApp
         return Text(l10n.homeNextPrayer);
       }),
     ));

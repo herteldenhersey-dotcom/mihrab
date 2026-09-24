@@ -3,7 +3,6 @@ import 'package:mihrab/core/services/clock.dart';
 import 'package:mihrab/core/services/location_change_notifier.dart';
 import 'package:mihrab/domain/enums/asr_calculation_method.dart';
 import 'package:mihrab/domain/enums/prayer_calculation_method.dart';
-import 'package:mihrab/domain/models/calculation_settings_model.dart';
 import 'package:mihrab/domain/models/location_model.dart';
 import 'package:mihrab/domain/models/prayer_times_model.dart';
 import 'package:mihrab/domain/providers/prayer_time_provider.dart';
@@ -16,7 +15,7 @@ import '../../helpers/fake_settings_repository.dart';
 // ── Shared fakes (local copy — avoids cross-file dependency) ─────────────────
 
 class _FakeClock implements Clock {
-  DateTime _now;
+  final DateTime _now;
   _FakeClock(this._now);
   @override
   DateTime now() => _now;
