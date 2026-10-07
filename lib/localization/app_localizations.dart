@@ -1017,6 +1017,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Notification permission denied. Prayer time features are not affected.'**
   String get settingsNotificationPermissionDeniedWarning;
+
+  /// No description provided for @ramadanDayLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get ramadanDayLabel;
+
+  /// No description provided for @ramadanDayCounter.
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan'**
+  String get ramadanDayCounter;
+
+  /// No description provided for @imsakLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Imsak'**
+  String get imsakLabel;
+
+  /// No description provided for @sahurLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Suhoor'**
+  String get sahurLabel;
+
+  /// No description provided for @iftarLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Iftar'**
+  String get iftarLabel;
+
+  /// No description provided for @tomorrowImsak.
+  ///
+  /// In en, this message translates to:
+  /// **'Tomorrow\'s Imsak'**
+  String get tomorrowImsak;
+
+  /// No description provided for @reminderEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder on'**
+  String get reminderEnabled;
+
+  /// No description provided for @reminderDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder off'**
+  String get reminderDisabled;
+
+  /// No description provided for @sahurReminderOffset.
+  ///
+  /// In en, this message translates to:
+  /// **'Sahur reminder time'**
+  String get sahurReminderOffset;
+
+  /// No description provided for @iftarReminderOffset.
+  ///
+  /// In en, this message translates to:
+  /// **'Iftar reminder time'**
+  String get iftarReminderOffset;
+
+  /// No description provided for @hijriAdjustment.
+  ///
+  /// In en, this message translates to:
+  /// **'Hijri date adjustment'**
+  String get hijriAdjustment;
+
+  /// No description provided for @estimatedRamadanDates.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated Ramadan dates'**
+  String get estimatedRamadanDates;
+
+  /// No description provided for @officialDateDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'These dates are calculated estimates and may differ from the official announcement.'**
+  String get officialDateDisclaimer;
+
+  /// No description provided for @countdownLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Countdown'**
+  String get countdownLabel;
+
+  /// No description provided for @dayCounterLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan day'**
+  String get dayCounterLabel;
+
+  /// No description provided for @hijriDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Hijri date'**
+  String get hijriDateLabel;
+
+  /// No description provided for @ramadanSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan settings'**
+  String get ramadanSettingsTitle;
+
+  /// No description provided for @ramadanCardVisibility.
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan card on Home'**
+  String get ramadanCardVisibility;
+
+  /// No description provided for @ramadanUntilImsak.
+  ///
+  /// In en, this message translates to:
+  /// **'Until Imsak'**
+  String get ramadanUntilImsak;
+
+  /// No description provided for @ramadanUntilIftar.
+  ///
+  /// In en, this message translates to:
+  /// **'Until Iftar'**
+  String get ramadanUntilIftar;
+
+  /// No description provided for @ramadanNextRamadan.
+  ///
+  /// In en, this message translates to:
+  /// **'Until Ramadan (estimated)'**
+  String get ramadanNextRamadan;
+
+  /// No description provided for @ramadanEstimateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimate'**
+  String get ramadanEstimateLabel;
+
+  /// No description provided for @ramadanSahurReminder.
+  ///
+  /// In en, this message translates to:
+  /// **'Sahur reminder'**
+  String get ramadanSahurReminder;
+
+  /// No description provided for @ramadanIftarReminder.
+  ///
+  /// In en, this message translates to:
+  /// **'Iftar reminder'**
+  String get ramadanIftarReminder;
+
+  /// No description provided for @ramadanAtIftar.
+  ///
+  /// In en, this message translates to:
+  /// **'At Iftar time'**
+  String get ramadanAtIftar;
+
+  /// No description provided for @ramadanMinutesBefore.
+  ///
+  /// In en, this message translates to:
+  /// **'minutes before'**
+  String get ramadanMinutesBefore;
+
+  /// No description provided for @ramadanTotalDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Total days'**
+  String get ramadanTotalDays;
+
+  /// No description provided for @ramadanNotActiveMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'It is not currently Ramadan. Estimated information for the next Ramadan is shown below.'**
+  String get ramadanNotActiveMessage;
+
+  /// No description provided for @ramadanReminderStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder status'**
+  String get ramadanReminderStatus;
 }
 
 class _AppLocalizationsDelegate

@@ -22,8 +22,11 @@ import 'data/repositories/geolocator_location_repository.dart';
 import 'data/repositories/hive_settings_repository.dart';
 import 'data/repositories/local_feedback_repository.dart';
 import 'data/repositories/overpass_mosque_repository.dart';
+import 'data/repositories/ramadan_repository_impl.dart';
 import 'data/repositories/shared_prefs_notification_settings_repository.dart';
 import 'data/services/compass/compass_service.dart';
+import 'data/services/hijri/hijri_calendar_service.dart';
+import 'data/services/ramadan/ramadan_notification_scheduler.dart';
 import 'data/services/location/location_service.dart';
 import 'data/services/notification/alarm_permission_service.dart';
 import 'data/services/notification/android_notification_scheduler.dart';
@@ -37,15 +40,21 @@ import 'domain/repositories/location_repository.dart';
 import 'domain/repositories/location_search_repository.dart';
 import 'domain/repositories/mosque_repository.dart';
 import 'domain/repositories/notification_settings_repository.dart';
+import 'domain/repositories/ramadan_repository.dart';
 import 'domain/repositories/settings_repository.dart';
 import 'domain/repositories/timezone_repository.dart';
 import 'domain/usecases/get_nearby_mosques_usecase.dart';
 import 'domain/usecases/get_next_prayer_usecase.dart';
 import 'domain/usecases/get_prayer_times_usecase.dart';
 import 'domain/usecases/get_qibla_direction_usecase.dart';
+import 'domain/usecases/get_ramadan_info_usecase.dart';
+import 'domain/usecases/get_ramadan_settings_usecase.dart';
+import 'domain/usecases/save_ramadan_settings_usecase.dart';
 import 'domain/usecases/schedule_notifications_usecase.dart';
+import 'domain/usecases/schedule_ramadan_notifications_usecase.dart';
 import 'domain/usecases/submit_feedback_usecase.dart';
 import 'features/home/presentation/cubit/home_cubit.dart';
+import 'features/ramadan/presentation/cubit/ramadan_cubit.dart';
 import 'features/settings/presentation/cubit/settings_cubit.dart';
 import 'localization/cubit/locale_cubit.dart';
 
@@ -108,7 +117,11 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton<NotificationSettingsRepository>(
         () => SharedPrefsNotificationSettingsRepository(
               getIt<SharedPrefsSettings>(),
-            ));
+            ))
+    ..registerLazySingleton<RamadanRepository>(() => RamadanRepositoryImpl(
+          getIt<HijriCalendarService>(),
+          getIt<SharedPrefsSettings>(),
+        ));
 
   // --- Services ----------------------------------------------------------
   getIt
@@ -120,7 +133,11 @@ Future<void> configureDependencies() async {
           getIt<LocationRepository>(),
           getIt<SettingsRepository>(),
         ))
-    ..registerLazySingleton<CompassService>(() => CompassService());
+    ..registerLazySingleton<CompassService>(() => CompassService())
+    ..registerLazySingleton<HijriCalendarService>(
+        () => const HijriCalendarService())
+    ..registerLazySingleton<RamadanNotificationScheduler>(
+        () => RamadanNotificationScheduler(getIt<NotificationService>()));
 
   // Platform-specific notification scheduler.
   getIt.registerLazySingleton<PrayerNotificationScheduler>(() {
@@ -161,6 +178,17 @@ Future<void> configureDependencies() async {
         () => ScheduleNotificationsUseCase(
               getIt<GetPrayerTimesUseCase>(),
               getIt<PrayerNotificationScheduler>(),
+            ))
+    ..registerFactory<GetRamadanInfoUseCase>(
+        () => GetRamadanInfoUseCase(getIt<RamadanRepository>()))
+    ..registerFactory<GetRamadanSettingsUseCase>(
+        () => GetRamadanSettingsUseCase(getIt<RamadanRepository>()))
+    ..registerFactory<SaveRamadanSettingsUseCase>(
+        () => SaveRamadanSettingsUseCase(getIt<RamadanRepository>()))
+    ..registerFactory<ScheduleRamadanNotificationsUseCase>(
+        () => ScheduleRamadanNotificationsUseCase(
+              getIt<GetPrayerTimesUseCase>(),
+              getIt<RamadanNotificationScheduler>(),
             ));
 
   // --- Feature Cubits ----------------------------------------------------
@@ -174,6 +202,17 @@ Future<void> configureDependencies() async {
         locationNotifier: getIt<LocationChangeNotifier>(),
         scheduleNotifications: getIt<ScheduleNotificationsUseCase>(),
         notificationSettings: getIt<NotificationSettingsRepository>(),
+        clock: const SystemClock(),
+      ));
+
+  // RamadanCubit is a factory (new instance per navigation) so its 1-second
+  // countdown timer lifecycle aligns with the widget tree.
+  getIt.registerFactory<RamadanCubit>(() => RamadanCubit(
+        settings: getIt<SettingsRepository>(),
+        getPrayerTimes: getIt<GetPrayerTimesUseCase>(),
+        getRamadanInfo: getIt<GetRamadanInfoUseCase>(),
+        ramadanRepo: getIt<RamadanRepository>(),
+        timezoneRepo: getIt<TimezoneRepository>(),
         clock: const SystemClock(),
       ));
 }

@@ -499,4 +499,93 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get settingsNotificationPermissionDeniedWarning =>
       'Notification permission denied. Prayer time features are not affected.';
+
+  @override
+  String get ramadanDayLabel => 'Day';
+
+  @override
+  String get ramadanDayCounter => 'Ramadan';
+
+  @override
+  String get imsakLabel => 'Imsak';
+
+  @override
+  String get sahurLabel => 'Suhoor';
+
+  @override
+  String get iftarLabel => 'Iftar';
+
+  @override
+  String get tomorrowImsak => 'Tomorrow\'s Imsak';
+
+  @override
+  String get reminderEnabled => 'Reminder on';
+
+  @override
+  String get reminderDisabled => 'Reminder off';
+
+  @override
+  String get sahurReminderOffset => 'Sahur reminder time';
+
+  @override
+  String get iftarReminderOffset => 'Iftar reminder time';
+
+  @override
+  String get hijriAdjustment => 'Hijri date adjustment';
+
+  @override
+  String get estimatedRamadanDates => 'Estimated Ramadan dates';
+
+  @override
+  String get officialDateDisclaimer =>
+      'These dates are calculated estimates and may differ from the official announcement.';
+
+  @override
+  String get countdownLabel => 'Countdown';
+
+  @override
+  String get dayCounterLabel => 'Ramadan day';
+
+  @override
+  String get hijriDateLabel => 'Hijri date';
+
+  @override
+  String get ramadanSettingsTitle => 'Ramadan settings';
+
+  @override
+  String get ramadanCardVisibility => 'Ramadan card on Home';
+
+  @override
+  String get ramadanUntilImsak => 'Until Imsak';
+
+  @override
+  String get ramadanUntilIftar => 'Until Iftar';
+
+  @override
+  String get ramadanNextRamadan => 'Until Ramadan (estimated)';
+
+  @override
+  String get ramadanEstimateLabel => 'Estimate';
+
+  @override
+  String get ramadanSahurReminder => 'Sahur reminder';
+
+  @override
+  String get ramadanIftarReminder => 'Iftar reminder';
+
+  @override
+  String get ramadanAtIftar => 'At Iftar time';
+
+  @override
+  String get ramadanMinutesBefore => 'minutes before';
+
+  @override
+  String get ramadanTotalDays => 'Total days';
+
+  @override
+  String get ramadanNotActiveMessage =>
+      'It is not currently Ramadan. Estimated information for the next Ramadan is shown below.';
+
+  @override
+  String get ramadanReminderStatus => 'Reminder status';
 }

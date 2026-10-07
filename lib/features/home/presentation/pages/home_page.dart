@@ -8,6 +8,7 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/prayer_time_utils.dart';
 import '../../../../localization/app_localizations.dart';
 import '../cubit/home_cubit.dart';
+import '../../../ramadan/presentation/widgets/ramadan_card.dart';
 import '../widgets/next_prayer_card.dart';
 import '../widgets/prayer_list.dart';
 import '../widgets/quick_access_row.dart';
@@ -144,6 +145,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   isTomorrow: state.nextPrayer.isTomorrow,
                   timezoneId: state.timezoneId,
                 ),
+
+                // ── Ramadan card (self-contained; hidden outside the
+                //    configured visibility / when not loaded) ───────────
+                const RamadanCard(),
 
                 const SizedBox(height: 24),
 

@@ -499,4 +499,93 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get settingsNotificationPermissionDeniedWarning =>
       'Bildirim izni reddedildi. Namaz vakti özellikleri etkilenmez.';
+
+  @override
+  String get ramadanDayLabel => 'Gün';
+
+  @override
+  String get ramadanDayCounter => 'Ramazan';
+
+  @override
+  String get imsakLabel => 'İmsak';
+
+  @override
+  String get sahurLabel => 'Sahur';
+
+  @override
+  String get iftarLabel => 'İftar';
+
+  @override
+  String get tomorrowImsak => 'Yarın imsak';
+
+  @override
+  String get reminderEnabled => 'Hatırlatıcı açık';
+
+  @override
+  String get reminderDisabled => 'Hatırlatıcı kapalı';
+
+  @override
+  String get sahurReminderOffset => 'Sahur hatırlatma zamanı';
+
+  @override
+  String get iftarReminderOffset => 'İftar hatırlatma zamanı';
+
+  @override
+  String get hijriAdjustment => 'Hicri tarih düzeltmesi';
+
+  @override
+  String get estimatedRamadanDates => 'Tahmini Ramazan tarihleri';
+
+  @override
+  String get officialDateDisclaimer =>
+      'Bu tarihler hesaplamaya dayalı tahminlerdir ve resmi Diyanet ilanıyla farklılık gösterebilir.';
+
+  @override
+  String get countdownLabel => 'Geri sayım';
+
+  @override
+  String get dayCounterLabel => 'Ramazan günü';
+
+  @override
+  String get hijriDateLabel => 'Hicri tarih';
+
+  @override
+  String get ramadanSettingsTitle => 'Ramazan ayarları';
+
+  @override
+  String get ramadanCardVisibility => 'Ana ekranda Ramazan kartı';
+
+  @override
+  String get ramadanUntilImsak => 'İmsak\'a kalan';
+
+  @override
+  String get ramadanUntilIftar => 'İftar\'a kalan';
+
+  @override
+  String get ramadanNextRamadan => 'Ramazan\'a kalan (tahmini)';
+
+  @override
+  String get ramadanEstimateLabel => 'Tahmini';
+
+  @override
+  String get ramadanSahurReminder => 'Sahur hatırlatıcısı';
+
+  @override
+  String get ramadanIftarReminder => 'İftar hatırlatıcısı';
+
+  @override
+  String get ramadanAtIftar => 'İftar vaktinde';
+
+  @override
+  String get ramadanMinutesBefore => 'dakika önce';
+
+  @override
+  String get ramadanTotalDays => 'Toplam gün';
+
+  @override
+  String get ramadanNotActiveMessage =>
+      'Şu anda Ramazan ayında değilsiniz. Aşağıda bir sonraki Ramazan için tahmini bilgiler yer alır.';
+
+  @override
+  String get ramadanReminderStatus => 'Hatırlatıcı durumu';
 }

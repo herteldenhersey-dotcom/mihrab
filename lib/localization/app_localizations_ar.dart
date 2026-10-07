@@ -494,4 +494,93 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get settingsNotificationPermissionDeniedWarning =>
       'تم رفض إذن الإشعارات. لا تتأثر ميزات أوقات الصلاة.';
+
+  @override
+  String get ramadanDayLabel => 'يوم';
+
+  @override
+  String get ramadanDayCounter => 'رمضان';
+
+  @override
+  String get imsakLabel => 'الإمساك';
+
+  @override
+  String get sahurLabel => 'السحور';
+
+  @override
+  String get iftarLabel => 'الإفطار';
+
+  @override
+  String get tomorrowImsak => 'إمساك الغد';
+
+  @override
+  String get reminderEnabled => 'التذكير مفعل';
+
+  @override
+  String get reminderDisabled => 'التذكير معطل';
+
+  @override
+  String get sahurReminderOffset => 'وقت تذكير السحور';
+
+  @override
+  String get iftarReminderOffset => 'وقت تذكير الإفطار';
+
+  @override
+  String get hijriAdjustment => 'تعديل التاريخ الهجري';
+
+  @override
+  String get estimatedRamadanDates => 'تواريخ رمضان التقديرية';
+
+  @override
+  String get officialDateDisclaimer =>
+      'هذه التواريخ تقديرية محسوبة وقد تختلف عن الإعلان الرسمي.';
+
+  @override
+  String get countdownLabel => 'العد التنازلي';
+
+  @override
+  String get dayCounterLabel => 'يوم رمضان';
+
+  @override
+  String get hijriDateLabel => 'التاريخ الهجري';
+
+  @override
+  String get ramadanSettingsTitle => 'إعدادات رمضان';
+
+  @override
+  String get ramadanCardVisibility => 'بطاقة رمضان في الرئيسية';
+
+  @override
+  String get ramadanUntilImsak => 'حتى الإمساك';
+
+  @override
+  String get ramadanUntilIftar => 'حتى الإفطار';
+
+  @override
+  String get ramadanNextRamadan => 'حتى رمضان (تقديري)';
+
+  @override
+  String get ramadanEstimateLabel => 'تقديري';
+
+  @override
+  String get ramadanSahurReminder => 'تذكير السحور';
+
+  @override
+  String get ramadanIftarReminder => 'تذكير الإفطار';
+
+  @override
+  String get ramadanAtIftar => 'عند وقت الإفطار';
+
+  @override
+  String get ramadanMinutesBefore => 'دقيقة قبل';
+
+  @override
+  String get ramadanTotalDays => 'إجمالي الأيام';
+
+  @override
+  String get ramadanNotActiveMessage =>
+      'ليس رمضان حالياً. تظهر أدناه معلومات تقديرية عن رمضان القادم.';
+
+  @override
+  String get ramadanReminderStatus => 'حالة التذكير';
 }
