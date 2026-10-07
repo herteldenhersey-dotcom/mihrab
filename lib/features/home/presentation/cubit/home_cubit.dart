@@ -11,12 +11,15 @@ import '../../../../core/services/location_change_notifier.dart';
 import '../../../../core/utils/date_utils.dart';
 import '../../../../core/utils/prayer_time_utils.dart';
 import '../../../../data/repositories/coordinate_timezone_repository.dart';
+import '../../../../data/services/notification/prayer_notification_scheduler.dart';
 import '../../../../domain/models/calculation_settings_model.dart';
 import '../../../../domain/models/location_model.dart';
 import '../../../../domain/models/prayer_times_model.dart';
+import '../../../../domain/repositories/notification_settings_repository.dart';
 import '../../../../domain/repositories/settings_repository.dart';
 import '../../../../domain/repositories/timezone_repository.dart';
 import '../../../../domain/usecases/get_prayer_times_usecase.dart';
+import '../../../../domain/usecases/schedule_notifications_usecase.dart';
 
 part 'home_state.dart';
 
@@ -53,6 +56,8 @@ class HomeCubit extends Cubit<HomeState> {
   final GetPrayerTimesUseCase _getPrayerTimes;
   final TimezoneRepository _timezoneRepo;
   final LocationChangeNotifier _locationNotifier;
+  final ScheduleNotificationsUseCase? _scheduleNotifications;
+  final NotificationSettingsRepository? _notificationSettings;
   final Clock _clock;
 
   Timer? _countdownTimer;
@@ -63,15 +68,15 @@ class HomeCubit extends Cubit<HomeState> {
   String _locale = 'tr';
 
   HomeCubit({
-    required SettingsRepository settings,
-    required GetPrayerTimesUseCase getPrayerTimes,
-    required TimezoneRepository timezoneRepo,
-    required LocationChangeNotifier locationNotifier,
+    required SettingsRepository this._settings,
+    required GetPrayerTimesUseCase this._getPrayerTimes,
+    required TimezoneRepository this._timezoneRepo,
+    required LocationChangeNotifier this._locationNotifier,
+    ScheduleNotificationsUseCase? scheduleNotifications,
+    NotificationSettingsRepository? notificationSettings,
     Clock? clock,
-  })  : _settings = settings,
-        _getPrayerTimes = getPrayerTimes,
-        _timezoneRepo = timezoneRepo,
-        _locationNotifier = locationNotifier,
+  })  : _scheduleNotifications = scheduleNotifications,
+        _notificationSettings = notificationSettings,
         _clock = clock ?? const SystemClock(),
         super(const HomeInitial());
 
@@ -237,6 +242,42 @@ class HomeCubit extends Cubit<HomeState> {
     ));
 
     _startTimer();
+
+    // 7. Roll the notification window forward (best-effort, fire-and-forget).
+    _tryRescheduleNotifications(location, calcSettings);
+  }
+
+  /// Schedules (or re-schedules) prayer notifications for the upcoming 7 days.
+  ///
+  /// Called every time _loadForLocation succeeds so the window rolls forward
+  /// on location change, date change, or app foreground.  Failures are
+  /// silently swallowed — notification issues must NOT crash the prayer-times
+  /// feature.
+  void _tryRescheduleNotifications(
+    AppLocation location,
+    CalculationSettings calcSettings,
+  ) {
+    final scheduler = _scheduleNotifications;
+    final notifRepo = _notificationSettings;
+    if (scheduler == null) return;
+    // Copy is built with empty lambdas — actual localized copy comes from
+    // the SettingsPage / BlocProvider context.  Here we only want the
+    // schedule to be set correctly; the notification body strings are supplied
+    // when the notification fires (via ScheduleNotificationsUseCase).
+    // We use simple English labels as fallback titles for background reschedule.
+    final copy = PrayerNotificationCopy(
+      title: (p) => p.name,
+      body: (p, t) => '${p.name} ${t.hour.toString().padLeft(2, '0')}:${t.minute.toString().padLeft(2, '0')}',
+    );
+    notifRepo?.load().then((notifSettings) {
+      scheduler.call(
+        latitude: location.latitude,
+        longitude: location.longitude,
+        settings: calcSettings,
+        copy: copy,
+        notificationSettings: notifSettings,
+      ).catchError((_) {}); // swallow errors silently
+    }).catchError((_) {});
   }
 
   void _startTimer() {

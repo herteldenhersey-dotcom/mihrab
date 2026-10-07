@@ -153,5 +153,54 @@
       }
     }
   },
-  "phase1Placeholder": "سيتم تنفيذ هذه الشاشة في مرحلة لاحقة."
+  "phase1Placeholder": "سيتم تنفيذ هذه الشاشة في مرحلة لاحقة.",
+  "settingsNotificationsTitle": "إعدادات الإشعارات",
+  "settingsNotificationsMasterSwitch": "تفعيل جميع الإشعارات",
+  "settingsNotificationsMasterSwitchOff": "الإشعارات معطلة",
+  "settingsNotificationsPerPrayer": "إشعارات حسب الصلاة",
+  "settingsNotificationsEnabled": "الإشعار مفعّل",
+  "settingsNotificationsDisabled": "الإشعار معطّل",
+  "settingsAdhanEnabled": "صوت الأذان",
+  "settingsAdhanDisabled": "صوت الأذان معطّل",
+  "settingsReminderOffset": "التذكير المبكر",
+  "settingsReminderOffsetMinutes": "قبل {minutes} دقيقة",
+  "@settingsReminderOffsetMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsReminderOffsetAtTime": "عند وقت الصلاة",
+  "settingsPermissionStatus": "حالة الإذن",
+  "settingsPermissionGranted": "تم منح إذن الإشعارات",
+  "settingsPermissionDenied": "تم رفض إذن الإشعارات",
+  "settingsPermissionRequest": "طلب الإذن",
+  "settingsExactAlarmStatus": "إذن التنبيه الدقيق",
+  "settingsExactAlarmGranted": "تم منح إذن التنبيه الدقيق",
+  "settingsExactAlarmDenied": "لا يوجد إذن للتنبيه الدقيق (تقريبي)",
+  "settingsExactAlarmRequest": "فتح إعدادات التنبيه الدقيق",
+  "settingsTestNotification": "إرسال إشعار تجريبي",
+  "settingsTestNotificationSent": "سيصل الإشعار التجريبي خلال {seconds} ثوانٍ",
+  "@settingsTestNotificationSent": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsTestNotificationTitle": "MİHRAB اختبار",
+  "settingsTestNotificationBody": "هذا إشعار تجريبي.",
+  "settingsPendingCount": "الإشعارات المعلقة: {count}",
+  "@settingsPendingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsAdhanPlaceholderNote": "صوت الأذان حالياً مؤقت. استبدل ملف الصوت بأذان حقيقي.",
+  "settingsIosRollingWindowNote": "iOS: يتم جدولة الإشعارات لنافذة 7 أيام. افتح التطبيق لتحديث النافذة.",
+  "settingsNotificationPermissionDeniedWarning": "تم رفض إذن الإشعارات. لا تتأثر ميزات أوقات الصلاة."
+
 }

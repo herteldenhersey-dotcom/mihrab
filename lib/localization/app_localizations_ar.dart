@@ -404,4 +404,94 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get phase1Placeholder => 'سيتم تنفيذ هذه الشاشة في مرحلة لاحقة.';
+
+  @override
+  String get settingsNotificationsTitle => 'إعدادات الإشعارات';
+
+  @override
+  String get settingsNotificationsMasterSwitch => 'تفعيل جميع الإشعارات';
+
+  @override
+  String get settingsNotificationsMasterSwitchOff => 'الإشعارات معطلة';
+
+  @override
+  String get settingsNotificationsPerPrayer => 'إشعارات حسب الصلاة';
+
+  @override
+  String get settingsNotificationsEnabled => 'الإشعار مفعّل';
+
+  @override
+  String get settingsNotificationsDisabled => 'الإشعار معطّل';
+
+  @override
+  String get settingsAdhanEnabled => 'صوت الأذان';
+
+  @override
+  String get settingsAdhanDisabled => 'صوت الأذان معطّل';
+
+  @override
+  String get settingsReminderOffset => 'التذكير المبكر';
+
+  @override
+  String settingsReminderOffsetMinutes(int minutes) {
+    return 'قبل $minutes دقيقة';
+  }
+
+  @override
+  String get settingsReminderOffsetAtTime => 'عند وقت الصلاة';
+
+  @override
+  String get settingsPermissionStatus => 'حالة الإذن';
+
+  @override
+  String get settingsPermissionGranted => 'تم منح إذن الإشعارات';
+
+  @override
+  String get settingsPermissionDenied => 'تم رفض إذن الإشعارات';
+
+  @override
+  String get settingsPermissionRequest => 'طلب الإذن';
+
+  @override
+  String get settingsExactAlarmStatus => 'إذن التنبيه الدقيق';
+
+  @override
+  String get settingsExactAlarmGranted => 'تم منح إذن التنبيه الدقيق';
+
+  @override
+  String get settingsExactAlarmDenied => 'لا يوجد إذن للتنبيه الدقيق (تقريبي)';
+
+  @override
+  String get settingsExactAlarmRequest => 'فتح إعدادات التنبيه الدقيق';
+
+  @override
+  String get settingsTestNotification => 'إرسال إشعار تجريبي';
+
+  @override
+  String settingsTestNotificationSent(int seconds) {
+    return 'سيصل الإشعار التجريبي خلال $seconds ثوانٍ';
+  }
+
+  @override
+  String get settingsTestNotificationTitle => 'MİHRAB اختبار';
+
+  @override
+  String get settingsTestNotificationBody => 'هذا إشعار تجريبي.';
+
+  @override
+  String settingsPendingCount(int count) {
+    return 'الإشعارات المعلقة: $count';
+  }
+
+  @override
+  String get settingsAdhanPlaceholderNote =>
+      'صوت الأذان حالياً مؤقت. استبدل ملف الصوت بأذان حقيقي.';
+
+  @override
+  String get settingsIosRollingWindowNote =>
+      'iOS: يتم جدولة الإشعارات لنافذة 7 أيام. افتح التطبيق لتحديث النافذة.';
+
+  @override
+  String get settingsNotificationPermissionDeniedWarning =>
+      'تم رفض إذن الإشعارات. لا تتأثر ميزات أوقات الصلاة.';
 }

@@ -855,6 +855,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This screen will be implemented in a later phase.'**
   String get phase1Placeholder;
+
+  /// No description provided for @settingsNotificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Settings'**
+  String get settingsNotificationsTitle;
+
+  /// No description provided for @settingsNotificationsMasterSwitch.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable all notifications'**
+  String get settingsNotificationsMasterSwitch;
+
+  /// No description provided for @settingsNotificationsMasterSwitchOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications off'**
+  String get settingsNotificationsMasterSwitchOff;
+
+  /// No description provided for @settingsNotificationsPerPrayer.
+  ///
+  /// In en, this message translates to:
+  /// **'Per-Prayer Notifications'**
+  String get settingsNotificationsPerPrayer;
+
+  /// No description provided for @settingsNotificationsEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification on'**
+  String get settingsNotificationsEnabled;
+
+  /// No description provided for @settingsNotificationsDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification off'**
+  String get settingsNotificationsDisabled;
+
+  /// No description provided for @settingsAdhanEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Adhan sound'**
+  String get settingsAdhanEnabled;
+
+  /// No description provided for @settingsAdhanDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Adhan sound off'**
+  String get settingsAdhanDisabled;
+
+  /// No description provided for @settingsReminderOffset.
+  ///
+  /// In en, this message translates to:
+  /// **'Remind me early'**
+  String get settingsReminderOffset;
+
+  /// No description provided for @settingsReminderOffsetMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes} minutes before'**
+  String settingsReminderOffsetMinutes(int minutes);
+
+  /// No description provided for @settingsReminderOffsetAtTime.
+  ///
+  /// In en, this message translates to:
+  /// **'At prayer time'**
+  String get settingsReminderOffsetAtTime;
+
+  /// No description provided for @settingsPermissionStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Permission status'**
+  String get settingsPermissionStatus;
+
+  /// No description provided for @settingsPermissionGranted.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification permission granted'**
+  String get settingsPermissionGranted;
+
+  /// No description provided for @settingsPermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification permission denied'**
+  String get settingsPermissionDenied;
+
+  /// No description provided for @settingsPermissionRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Request permission'**
+  String get settingsPermissionRequest;
+
+  /// No description provided for @settingsExactAlarmStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Exact alarm permission'**
+  String get settingsExactAlarmStatus;
+
+  /// No description provided for @settingsExactAlarmGranted.
+  ///
+  /// In en, this message translates to:
+  /// **'Exact alarm permission granted'**
+  String get settingsExactAlarmGranted;
+
+  /// No description provided for @settingsExactAlarmDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'No exact alarm permission (approximate)'**
+  String get settingsExactAlarmDenied;
+
+  /// No description provided for @settingsExactAlarmRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Open exact alarm settings'**
+  String get settingsExactAlarmRequest;
+
+  /// No description provided for @settingsTestNotification.
+  ///
+  /// In en, this message translates to:
+  /// **'Send test notification'**
+  String get settingsTestNotification;
+
+  /// No description provided for @settingsTestNotificationSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Test notification will arrive in {seconds} seconds'**
+  String settingsTestNotificationSent(int seconds);
+
+  /// No description provided for @settingsTestNotificationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MİHRAB Test'**
+  String get settingsTestNotificationTitle;
+
+  /// No description provided for @settingsTestNotificationBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This is a test notification.'**
+  String get settingsTestNotificationBody;
+
+  /// No description provided for @settingsPendingCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending notifications: {count}'**
+  String settingsPendingCount(int count);
+
+  /// No description provided for @settingsAdhanPlaceholderNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Adhan sound is currently a placeholder. Replace the sound file for a real adhan.'**
+  String get settingsAdhanPlaceholderNote;
+
+  /// No description provided for @settingsIosRollingWindowNote.
+  ///
+  /// In en, this message translates to:
+  /// **'iOS: Notifications are scheduled for a 7-day window. Open the app to refresh the window.'**
+  String get settingsIosRollingWindowNote;
+
+  /// No description provided for @settingsNotificationPermissionDeniedWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification permission denied. Prayer time features are not affected.'**
+  String get settingsNotificationPermissionDeniedWarning;
 }
 
 class _AppLocalizationsDelegate

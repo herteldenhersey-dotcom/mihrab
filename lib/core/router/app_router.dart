@@ -11,6 +11,7 @@ import '../../features/onboarding/presentation/pages/onboarding_page.dart';
 import '../../features/prayer_times/presentation/pages/prayer_times_page.dart';
 import '../../features/qibla/presentation/pages/qibla_page.dart';
 import '../../features/ramadan/presentation/pages/ramadan_page.dart';
+import '../../features/settings/presentation/cubit/settings_cubit.dart';
 import '../../features/settings/presentation/pages/settings_page.dart';
 import '../../injection.dart';
 import '../../localization/app_localizations.dart';
@@ -76,7 +77,10 @@ GoRouter buildAppRouter({required bool onboardingComplete}) {
             routes: [
               GoRoute(
                 path: AppRoutes.settings,
-                builder: (context, state) => const SettingsPage(),
+                builder: (context, state) => BlocProvider<SettingsCubit>(
+                  create: (_) => getIt<SettingsCubit>(),
+                  child: const SettingsPage(),
+                ),
               ),
             ],
           ),

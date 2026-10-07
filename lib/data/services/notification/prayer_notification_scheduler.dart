@@ -1,5 +1,6 @@
 import '../../../core/constants/prayer_constants.dart';
 import '../../../domain/enums/prayer_type.dart';
+import '../../../domain/models/notification_settings_model.dart';
 import '../../../domain/models/prayer_times_model.dart';
 
 /// Builds the (title, body) shown for a given prayer notification.
@@ -21,11 +22,17 @@ class PrayerNotificationCopy {
 abstract class PrayerNotificationScheduler {
   /// Schedules notifications for the provided [days] (chronological).
   ///
-  /// [enabledPrayers] optionally restricts which prayers fire (defaults to the
-  /// five obligatory prayers; sunrise is opt-in).
+  /// [notificationSettings] drives per-prayer enable/disable, adhan channel
+  /// selection and reminder offset.  When null the scheduler uses defaults
+  /// (all obligatory prayers, no adhan, 0-minute offset).
+  ///
+  /// [enabledPrayers] is a legacy override kept for backward-compatibility.
+  /// If both [notificationSettings] and [enabledPrayers] are supplied,
+  /// [notificationSettings] takes precedence.
   Future<void> scheduleWeek({
     required List<DailyPrayerTimes> days,
     required PrayerNotificationCopy copy,
+    NotificationSettings? notificationSettings,
     Set<PrayerType>? enabledPrayers,
   });
 
@@ -47,4 +54,34 @@ mixin PrayerSchedulerIdMixin {
   /// Default enabled prayers: the five obligatory prayers (sunrise excluded).
   Set<PrayerType> defaultEnabled() =>
       PrayerType.values.where((p) => p.isObligatory).toSet();
+
+  /// Resolve the effective enabled prayers from [settings] or [fallback].
+  ///
+  /// Sunrise is ALWAYS excluded as an obligatory adhan source regardless of
+  /// the config value stored in [settings].
+  Set<PrayerType> resolveEnabledPrayers(
+    NotificationSettings? settings,
+    Set<PrayerType>? fallback,
+  ) {
+    if (settings != null) return settings.effectiveEnabledPrayers;
+    if (fallback != null) return fallback.where((p) => p.isObligatory).toSet();
+    return defaultEnabled();
+  }
+
+  /// Returns the adjusted fire time for a prayer given its [config].
+  ///
+  /// A [reminderOffsetMinutes] > 0 fires BEFORE the prayer time.
+  /// 0 fires AT the prayer time.
+  DateTime adjustedFireTime(DateTime prayerTime, PrayerNotificationConfig config) {
+    if (config.reminderOffsetMinutes == 0) return prayerTime;
+    return prayerTime.subtract(Duration(minutes: config.reminderOffsetMinutes));
+  }
+
+  /// Whether this prayer should use the adhan sound channel.
+  ///
+  /// Sunrise is never routed to the adhan channel.
+  bool useAdhanChannel(PrayerType prayer, PrayerNotificationConfig config) {
+    if (!prayer.isObligatory) return false;
+    return config.adhanEnabled;
+  }
 }

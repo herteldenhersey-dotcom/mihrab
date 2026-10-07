@@ -408,4 +408,95 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get phase1Placeholder =>
       'This screen will be implemented in a later phase.';
+
+  @override
+  String get settingsNotificationsTitle => 'Notification Settings';
+
+  @override
+  String get settingsNotificationsMasterSwitch => 'Enable all notifications';
+
+  @override
+  String get settingsNotificationsMasterSwitchOff => 'Notifications off';
+
+  @override
+  String get settingsNotificationsPerPrayer => 'Per-Prayer Notifications';
+
+  @override
+  String get settingsNotificationsEnabled => 'Notification on';
+
+  @override
+  String get settingsNotificationsDisabled => 'Notification off';
+
+  @override
+  String get settingsAdhanEnabled => 'Adhan sound';
+
+  @override
+  String get settingsAdhanDisabled => 'Adhan sound off';
+
+  @override
+  String get settingsReminderOffset => 'Remind me early';
+
+  @override
+  String settingsReminderOffsetMinutes(int minutes) {
+    return '$minutes minutes before';
+  }
+
+  @override
+  String get settingsReminderOffsetAtTime => 'At prayer time';
+
+  @override
+  String get settingsPermissionStatus => 'Permission status';
+
+  @override
+  String get settingsPermissionGranted => 'Notification permission granted';
+
+  @override
+  String get settingsPermissionDenied => 'Notification permission denied';
+
+  @override
+  String get settingsPermissionRequest => 'Request permission';
+
+  @override
+  String get settingsExactAlarmStatus => 'Exact alarm permission';
+
+  @override
+  String get settingsExactAlarmGranted => 'Exact alarm permission granted';
+
+  @override
+  String get settingsExactAlarmDenied =>
+      'No exact alarm permission (approximate)';
+
+  @override
+  String get settingsExactAlarmRequest => 'Open exact alarm settings';
+
+  @override
+  String get settingsTestNotification => 'Send test notification';
+
+  @override
+  String settingsTestNotificationSent(int seconds) {
+    return 'Test notification will arrive in $seconds seconds';
+  }
+
+  @override
+  String get settingsTestNotificationTitle => 'MİHRAB Test';
+
+  @override
+  String get settingsTestNotificationBody => 'This is a test notification.';
+
+  @override
+  String settingsPendingCount(int count) {
+    return 'Pending notifications: $count';
+  }
+
+  @override
+  String get settingsAdhanPlaceholderNote =>
+      'Adhan sound is currently a placeholder. Replace the sound file for a real adhan.';
+
+  @override
+  String get settingsIosRollingWindowNote =>
+      'iOS: Notifications are scheduled for a 7-day window. Open the app to refresh the window.';
+
+  @override
+  String get settingsNotificationPermissionDeniedWarning =>
+      'Notification permission denied. Prayer time features are not affected.';
 }

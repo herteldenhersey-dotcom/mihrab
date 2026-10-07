@@ -2,6 +2,7 @@ import '../../core/constants/prayer_constants.dart';
 import '../../data/services/notification/prayer_notification_scheduler.dart';
 import '../enums/prayer_type.dart';
 import '../models/calculation_settings_model.dart';
+import '../models/notification_settings_model.dart';
 import '../models/prayer_times_model.dart';
 import 'get_prayer_times_usecase.dart';
 
@@ -10,6 +11,10 @@ import 'get_prayer_times_usecase.dart';
 ///
 /// The localized [PrayerNotificationCopy] is supplied by the presentation
 /// layer so all user-facing strings stay in the ARB files.
+///
+/// Phase 5: accepts [NotificationSettings] for per-prayer config (enabled,
+/// adhan channel, reminder offset). Falls back to legacy [enabledPrayers] if
+/// [notificationSettings] is null.
 class ScheduleNotificationsUseCase {
   final GetPrayerTimesUseCase _getPrayerTimes;
   final PrayerNotificationScheduler _scheduler;
@@ -21,6 +26,7 @@ class ScheduleNotificationsUseCase {
     required double longitude,
     required CalculationSettings settings,
     required PrayerNotificationCopy copy,
+    NotificationSettings? notificationSettings,
     Set<PrayerType>? enabledPrayers,
     DateTime? from,
   }) async {
@@ -39,6 +45,7 @@ class ScheduleNotificationsUseCase {
     await _scheduler.scheduleWeek(
       days: days,
       copy: copy,
+      notificationSettings: notificationSettings,
       enabledPrayers: enabledPrayers,
     );
   }

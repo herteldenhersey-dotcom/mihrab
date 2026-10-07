@@ -408,4 +408,95 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get phase1Placeholder =>
       'Bu ekran ilerleyen bir fazda uygulanacaktır.';
+
+  @override
+  String get settingsNotificationsTitle => 'Bildirim Ayarları';
+
+  @override
+  String get settingsNotificationsMasterSwitch =>
+      'Tüm bildirimleri etkinleştir';
+
+  @override
+  String get settingsNotificationsMasterSwitchOff => 'Bildirimler kapalı';
+
+  @override
+  String get settingsNotificationsPerPrayer => 'Vakite Göre Bildirimler';
+
+  @override
+  String get settingsNotificationsEnabled => 'Bildirim açık';
+
+  @override
+  String get settingsNotificationsDisabled => 'Bildirim kapalı';
+
+  @override
+  String get settingsAdhanEnabled => 'Ezan sesi';
+
+  @override
+  String get settingsAdhanDisabled => 'Ezan sesi kapalı';
+
+  @override
+  String get settingsReminderOffset => 'Önce hatırlatma';
+
+  @override
+  String settingsReminderOffsetMinutes(int minutes) {
+    return '$minutes dakika önce';
+  }
+
+  @override
+  String get settingsReminderOffsetAtTime => 'Vakitte';
+
+  @override
+  String get settingsPermissionStatus => 'İzin durumu';
+
+  @override
+  String get settingsPermissionGranted => 'Bildirim izni verildi';
+
+  @override
+  String get settingsPermissionDenied => 'Bildirim izni verilmedi';
+
+  @override
+  String get settingsPermissionRequest => 'İzin iste';
+
+  @override
+  String get settingsExactAlarmStatus => 'Tam alarm izni';
+
+  @override
+  String get settingsExactAlarmGranted => 'Tam alarm izni verildi';
+
+  @override
+  String get settingsExactAlarmDenied => 'Tam alarm izni yok (yaklaşık)';
+
+  @override
+  String get settingsExactAlarmRequest => 'Tam alarm izni aç';
+
+  @override
+  String get settingsTestNotification => 'Test bildirimi gönder';
+
+  @override
+  String settingsTestNotificationSent(int seconds) {
+    return 'Test bildirimi $seconds saniye içinde gelecek';
+  }
+
+  @override
+  String get settingsTestNotificationTitle => 'MİHRAB Test';
+
+  @override
+  String get settingsTestNotificationBody => 'Bu bir test bildirimidir.';
+
+  @override
+  String settingsPendingCount(int count) {
+    return 'Bekleyen bildirim sayısı: $count';
+  }
+
+  @override
+  String get settingsAdhanPlaceholderNote =>
+      'Ezan sesi şu an yer tutucudur. Gerçek bir ezan için ses dosyasını değiştirin.';
+
+  @override
+  String get settingsIosRollingWindowNote =>
+      'iOS: Bildirimler 7 günlük pencereye planlanır. Pencere dolduğunda uygulamayı açmanız gerekir.';
+
+  @override
+  String get settingsNotificationPermissionDeniedWarning =>
+      'Bildirim izni reddedildi. Namaz vakti özellikleri etkilenmez.';
 }

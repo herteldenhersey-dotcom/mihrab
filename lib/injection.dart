@@ -22,6 +22,7 @@ import 'data/repositories/geolocator_location_repository.dart';
 import 'data/repositories/hive_settings_repository.dart';
 import 'data/repositories/local_feedback_repository.dart';
 import 'data/repositories/overpass_mosque_repository.dart';
+import 'data/repositories/shared_prefs_notification_settings_repository.dart';
 import 'data/services/compass/compass_service.dart';
 import 'data/services/location/location_service.dart';
 import 'data/services/notification/alarm_permission_service.dart';
@@ -35,6 +36,7 @@ import 'domain/repositories/feedback_repository.dart';
 import 'domain/repositories/location_repository.dart';
 import 'domain/repositories/location_search_repository.dart';
 import 'domain/repositories/mosque_repository.dart';
+import 'domain/repositories/notification_settings_repository.dart';
 import 'domain/repositories/settings_repository.dart';
 import 'domain/repositories/timezone_repository.dart';
 import 'domain/usecases/get_nearby_mosques_usecase.dart';
@@ -44,6 +46,7 @@ import 'domain/usecases/get_qibla_direction_usecase.dart';
 import 'domain/usecases/schedule_notifications_usecase.dart';
 import 'domain/usecases/submit_feedback_usecase.dart';
 import 'features/home/presentation/cubit/home_cubit.dart';
+import 'features/settings/presentation/cubit/settings_cubit.dart';
 import 'localization/cubit/locale_cubit.dart';
 
 /// Global service locator.
@@ -101,7 +104,11 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton<TimezoneRepository>(
         () => CoordinateTimezoneRepository(prefs))
     ..registerLazySingleton<LocationChangeNotifier>(
-        () => LocationChangeNotifier());
+        () => LocationChangeNotifier())
+    ..registerLazySingleton<NotificationSettingsRepository>(
+        () => SharedPrefsNotificationSettingsRepository(
+              getIt<SharedPrefsSettings>(),
+            ));
 
   // --- Services ----------------------------------------------------------
   getIt
@@ -134,6 +141,10 @@ Future<void> configureDependencies() async {
   getIt.registerLazySingleton<LocaleCubit>(
       () => LocaleCubit(getIt<SettingsRepository>()));
 
+  // SettingsCubit is a factory (fresh instance per navigation).
+  getIt.registerFactory<SettingsCubit>(
+      () => SettingsCubit(getIt<NotificationSettingsRepository>()));
+
   // --- Use cases ---------------------------------------------------------
   getIt
     ..registerFactory<GetPrayerTimesUseCase>(
@@ -161,6 +172,8 @@ Future<void> configureDependencies() async {
         getPrayerTimes: getIt<GetPrayerTimesUseCase>(),
         timezoneRepo: getIt<TimezoneRepository>(),
         locationNotifier: getIt<LocationChangeNotifier>(),
+        scheduleNotifications: getIt<ScheduleNotificationsUseCase>(),
+        notificationSettings: getIt<NotificationSettingsRepository>(),
         clock: const SystemClock(),
       ));
 }

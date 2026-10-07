@@ -153,5 +153,54 @@
       }
     }
   },
-  "phase1Placeholder": "Bu ekran ilerleyen bir fazda uygulanacaktır."
+  "phase1Placeholder": "Bu ekran ilerleyen bir fazda uygulanacaktır.",
+  "settingsNotificationsTitle": "Bildirim Ayarları",
+  "settingsNotificationsMasterSwitch": "Tüm bildirimleri etkinleştir",
+  "settingsNotificationsMasterSwitchOff": "Bildirimler kapalı",
+  "settingsNotificationsPerPrayer": "Vakite Göre Bildirimler",
+  "settingsNotificationsEnabled": "Bildirim açık",
+  "settingsNotificationsDisabled": "Bildirim kapalı",
+  "settingsAdhanEnabled": "Ezan sesi",
+  "settingsAdhanDisabled": "Ezan sesi kapalı",
+  "settingsReminderOffset": "Önce hatırlatma",
+  "settingsReminderOffsetMinutes": "{minutes} dakika önce",
+  "@settingsReminderOffsetMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsReminderOffsetAtTime": "Vakitte",
+  "settingsPermissionStatus": "İzin durumu",
+  "settingsPermissionGranted": "Bildirim izni verildi",
+  "settingsPermissionDenied": "Bildirim izni verilmedi",
+  "settingsPermissionRequest": "İzin iste",
+  "settingsExactAlarmStatus": "Tam alarm izni",
+  "settingsExactAlarmGranted": "Tam alarm izni verildi",
+  "settingsExactAlarmDenied": "Tam alarm izni yok (yaklaşık)",
+  "settingsExactAlarmRequest": "Tam alarm izni aç",
+  "settingsTestNotification": "Test bildirimi gönder",
+  "settingsTestNotificationSent": "Test bildirimi {seconds} saniye içinde gelecek",
+  "@settingsTestNotificationSent": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsTestNotificationTitle": "MİHRAB Test",
+  "settingsTestNotificationBody": "Bu bir test bildirimidir.",
+  "settingsPendingCount": "Bekleyen bildirim sayısı: {count}",
+  "@settingsPendingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsAdhanPlaceholderNote": "Ezan sesi şu an yer tutucudur. Gerçek bir ezan için ses dosyasını değiştirin.",
+  "settingsIosRollingWindowNote": "iOS: Bildirimler 7 günlük pencereye planlanır. Pencere dolduğunda uygulamayı açmanız gerekir.",
+  "settingsNotificationPermissionDeniedWarning": "Bildirim izni reddedildi. Namaz vakti özellikleri etkilenmez."
+
 }

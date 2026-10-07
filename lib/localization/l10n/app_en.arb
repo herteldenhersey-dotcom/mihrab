@@ -153,5 +153,54 @@
       }
     }
   },
-  "phase1Placeholder": "This screen will be implemented in a later phase."
+  "phase1Placeholder": "This screen will be implemented in a later phase.",
+  "settingsNotificationsTitle": "Notification Settings",
+  "settingsNotificationsMasterSwitch": "Enable all notifications",
+  "settingsNotificationsMasterSwitchOff": "Notifications off",
+  "settingsNotificationsPerPrayer": "Per-Prayer Notifications",
+  "settingsNotificationsEnabled": "Notification on",
+  "settingsNotificationsDisabled": "Notification off",
+  "settingsAdhanEnabled": "Adhan sound",
+  "settingsAdhanDisabled": "Adhan sound off",
+  "settingsReminderOffset": "Remind me early",
+  "settingsReminderOffsetMinutes": "{minutes} minutes before",
+  "@settingsReminderOffsetMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsReminderOffsetAtTime": "At prayer time",
+  "settingsPermissionStatus": "Permission status",
+  "settingsPermissionGranted": "Notification permission granted",
+  "settingsPermissionDenied": "Notification permission denied",
+  "settingsPermissionRequest": "Request permission",
+  "settingsExactAlarmStatus": "Exact alarm permission",
+  "settingsExactAlarmGranted": "Exact alarm permission granted",
+  "settingsExactAlarmDenied": "No exact alarm permission (approximate)",
+  "settingsExactAlarmRequest": "Open exact alarm settings",
+  "settingsTestNotification": "Send test notification",
+  "settingsTestNotificationSent": "Test notification will arrive in {seconds} seconds",
+  "@settingsTestNotificationSent": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsTestNotificationTitle": "MİHRAB Test",
+  "settingsTestNotificationBody": "This is a test notification.",
+  "settingsPendingCount": "Pending notifications: {count}",
+  "@settingsPendingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsAdhanPlaceholderNote": "Adhan sound is currently a placeholder. Replace the sound file for a real adhan.",
+  "settingsIosRollingWindowNote": "iOS: Notifications are scheduled for a 7-day window. Open the app to refresh the window.",
+  "settingsNotificationPermissionDeniedWarning": "Notification permission denied. Prayer time features are not affected."
+
 }
