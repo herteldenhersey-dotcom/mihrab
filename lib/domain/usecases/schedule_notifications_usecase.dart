@@ -26,6 +26,7 @@ class ScheduleNotificationsUseCase {
     required double longitude,
     required CalculationSettings settings,
     required PrayerNotificationCopy copy,
+    String? locationTzId,
     NotificationSettings? notificationSettings,
     Set<PrayerType>? enabledPrayers,
     DateTime? from,
@@ -45,6 +46,7 @@ class ScheduleNotificationsUseCase {
     await _scheduler.scheduleWeek(
       days: days,
       copy: copy,
+      locationTzId: locationTzId,
       notificationSettings: notificationSettings,
       enabledPrayers: enabledPrayers,
     );

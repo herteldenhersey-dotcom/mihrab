@@ -275,6 +275,7 @@ class HomeCubit extends Cubit<HomeState> {
         longitude: location.longitude,
         settings: calcSettings,
         copy: copy,
+        locationTzId: location.timezoneId,
         notificationSettings: notifSettings,
       ).catchError((_) {}); // swallow errors silently
     }).catchError((_) {});

@@ -28,11 +28,13 @@ class _FakeScheduler implements PrayerNotificationScheduler {
   Future<void> scheduleWeek({
     required List<DailyPrayerTimes> days,
     required PrayerNotificationCopy copy,
+    String? locationTzId,
     NotificationSettings? notificationSettings,
     Set<PrayerType>? enabledPrayers,
   }) async {
     calls.add({
       'days': days,
+      'locationTzId': locationTzId,
       'notificationSettings': notificationSettings,
       'enabledPrayers': enabledPrayers,
     });
@@ -278,7 +280,7 @@ void main() {
       final days = fakeScheduler.calls.first['days'] as List<DailyPrayerTimes>;
       for (var i = 1; i < days.length; i++) {
         expect(days[i].date.isAfter(days[i - 1].date), isTrue,
-            reason: 'Day ${i} should be after day ${i - 1}');
+            reason: 'Day $i should be after day ${i - 1}');
       }
     });
   });
@@ -307,6 +309,75 @@ void main() {
               reason: 'Schedule ID collides with test notification ID 0');
         }
       }
+    });
+
+    // §5.1 — allScheduleIds() scoped-cancel helper
+    test('S24: allScheduleIds returns scheduleWindowDays × PrayerType.values IDs', () {
+      final host = _MixinHost();
+      final ids = host.allScheduleIds();
+      final expected = PrayerConstants.scheduleWindowDays * PrayerType.values.length;
+      expect(ids.length, equals(expected),
+          reason: 'Should produce exactly scheduleWindowDays × prayer-type-count IDs');
+    });
+
+    test('S25: allScheduleIds contains no duplicates', () {
+      final host = _MixinHost();
+      final ids = host.allScheduleIds();
+      expect(ids.toSet().length, equals(ids.length),
+          reason: 'allScheduleIds must not contain duplicate IDs');
+    });
+
+    test('S26: allScheduleIds does not contain testNotificationId (0)', () {
+      final host = _MixinHost();
+      final ids = host.allScheduleIds();
+      expect(ids, isNot(contains(PrayerConstants.testNotificationId)),
+          reason: 'Scoped cancel must never touch test notification ID 0');
+    });
+  });
+
+  // ── Phase 5.1 — locationTzId forwarding ──────────────────────────────────
+
+  group('§5.1 locationTzId forwarding', () {
+    late _FakeScheduler fakeScheduler;
+    late _FakeGetPrayerTimesUseCase fakePrayerTimes;
+    late ScheduleNotificationsUseCase useCase;
+
+    setUp(() {
+      fakeScheduler = _FakeScheduler();
+      fakePrayerTimes = _FakeGetPrayerTimesUseCase();
+      useCase = ScheduleNotificationsUseCase(fakePrayerTimes, fakeScheduler);
+    });
+
+    test('S27: locationTzId is forwarded to scheduleWeek when provided', () async {
+      await useCase.call(
+        latitude: 41.0,
+        longitude: 29.0,
+        settings: _fakeSettings(),
+        copy: _fakeCopy(),
+        locationTzId: 'Europe/Istanbul',
+      );
+      expect(fakeScheduler.calls.first['locationTzId'], equals('Europe/Istanbul'));
+    });
+
+    test('S28: locationTzId is null when not provided', () async {
+      await useCase.call(
+        latitude: 41.0,
+        longitude: 29.0,
+        settings: _fakeSettings(),
+        copy: _fakeCopy(),
+      );
+      expect(fakeScheduler.calls.first['locationTzId'], isNull);
+    });
+
+    test('S29: arbitrary IANA tzId is forwarded unchanged', () async {
+      await useCase.call(
+        latitude: 40.71,
+        longitude: -74.00,
+        settings: _fakeSettings(),
+        copy: _fakeCopy(),
+        locationTzId: 'America/New_York',
+      );
+      expect(fakeScheduler.calls.first['locationTzId'], equals('America/New_York'));
     });
   });
 }

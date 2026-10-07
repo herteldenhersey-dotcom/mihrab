@@ -38,6 +38,7 @@ class AndroidPrayerNotificationScheduler
   Future<void> scheduleWeek({
     required List<DailyPrayerTimes> days,
     required PrayerNotificationCopy copy,
+    String? locationTzId,
     NotificationSettings? notificationSettings,
     Set<PrayerType>? enabledPrayers,
   }) async {
@@ -45,7 +46,10 @@ class AndroidPrayerNotificationScheduler
     final enabled = resolveEnabledPrayers(notificationSettings, enabledPrayers);
     final useExact = await _alarmPermission.canScheduleExactAlarms();
 
-    await _service.cancelAll();
+    // SCOPED cancel: remove only the prayer-schedule IDs (100–165 for a 7-day
+    // window with base=100).  cancelAll() would also wipe the test notification
+    // (ID 0) and any future reminder category notifications.
+    await _service.cancelIds(allScheduleIds());
 
     if (enabled.isEmpty) return; // master switch off or no prayers enabled
 
@@ -69,6 +73,7 @@ class AndroidPrayerNotificationScheduler
           title: copy.title(prayer),
           body: copy.body(prayer, entry.value),
           when: fireTime,
+          locationTzId: locationTzId,
           payload: 'prayer:${prayer.key}',
           exact: useExact,
           useAdhanChannel: useAdhanChannel(prayer, config),
@@ -77,13 +82,13 @@ class AndroidPrayerNotificationScheduler
     }
   }
 
-  /// Fallback integration point: register a periodic WorkManager task that
-  /// wakes ~daily to recompute and re-arm the schedule when exact alarms are
-  /// unavailable or the app is rarely opened.  No-op hook in current phase.
-  Future<void> rescheduleWithWorkManager() async {
-    // Intentionally a no-op. See android_notification_scheduler docs; wiring
-    // Workmanager.registerPeriodicTask lands in a later phase.
-  }
+  // NOTE: rescheduleWithWorkManager() intentionally REMOVED.
+  //
+  // It was a declared no-op that created a false impression of WorkManager
+  // integration.  Reboot restoration is handled by the native Android plugin
+  // mechanism: ScheduledNotificationBootReceiver (declared in the manifest)
+  // restores all pending alarms after device reboot — no WorkManager required.
+  // See AndroidManifest.xml for the registered receiver.
 
   @override
   Future<void> cancelAll() => _service.cancelAll();

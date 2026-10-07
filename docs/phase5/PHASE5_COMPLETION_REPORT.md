@@ -396,3 +396,32 @@ rolling-horizon exhaustion, pending count and silent-mode behavior.
 ---
 
 PHASE 5 IMPLEMENTATION COMPLETE — AWAITING REVIEW
+
+---
+
+## Phase 5.1 Güncellemesi
+
+**Tarih:** 2026-10-07  
+**Kapsam:** Phase 5'te tespit edilen kritik doğruluk ve uyumluluk sorunları giderildi.
+
+### Değişiklikler Özeti
+
+| # | Sorun | Çözüm |
+|---|-------|-------|
+| §1 | `USE_EXACT_ALARM` uygunsuz izin | Kaldırıldı; yalnızca `SCHEDULE_EXACT_ALARM` korundu |
+| §2 | Timezone: `tz.local` yerine seçilen lokasyon kullanımı | `tz.TZDateTime(loc, y, m, d, h, min, s)` ile düzeltildi |
+| §2 | `tz.setLocalLocation('Europe/Istanbul')` sabit bölge | `init()` içinden kaldırıldı |
+| §3 | `rescheduleWithWorkManager()` yanıltıcı no-op | Kaldırıldı; native `BootReceiver` belgelendi |
+| §4 | `adhan_placeholder.wav` iOS'ta bundle'da değildi | pbxproj'a eklendi (FileRef + BuildFile + Resources) |
+| §6 | `cancelAll()` — test bildirimi dahil her şeyi siliyordu | `cancelIds(allScheduleIds())` scoped cancel ile değiştirildi |
+| §9 | Yeni regresyon testleri eksikti | S24–S29 eklendi |
+
+### Test Sonuçları (Phase 5.1 Sonrası)
+- **241 keşfedilen** (Phase 5: 235, +6 yeni)
+- **221 geçti** (Phase 5: 215, +6 yeni)
+- **20 atlandı** (Phase 4 Diyanet vakaları — değişmedi)
+- **0 başarısız**
+
+Ayrıntılar için: `docs/phase5/PHASE5_1_VALIDATION_REPORT.md`
+
+PHASE 5.1 IMPLEMENTATION COMPLETE — AWAITING REVIEW

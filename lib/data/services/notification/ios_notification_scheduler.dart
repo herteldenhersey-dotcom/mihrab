@@ -38,11 +38,14 @@ class IosPrayerNotificationScheduler
   Future<void> scheduleWeek({
     required List<DailyPrayerTimes> days,
     required PrayerNotificationCopy copy,
+    String? locationTzId,
     NotificationSettings? notificationSettings,
     Set<PrayerType>? enabledPrayers,
   }) async {
     final enabled = resolveEnabledPrayers(notificationSettings, enabledPrayers);
-    await _service.cancelAll();
+    // SCOPED cancel: remove only the prayer-schedule IDs so unrelated
+    // notifications (test notification ID 0, future categories) survive.
+    await _service.cancelIds(allScheduleIds());
 
     if (enabled.isEmpty) return; // master switch off or nothing enabled
 
@@ -91,6 +94,7 @@ class IosPrayerNotificationScheduler
         title: copy.title(slot.prayer),
         body: copy.body(slot.prayer, slot.prayerTime),
         when: slot.fireTime,
+        locationTzId: locationTzId,
         payload: 'prayer:${slot.prayer.key}',
         exact: true,
         useAdhanChannel: slot.adhan,

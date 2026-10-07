@@ -19,6 +19,11 @@ abstract class NotificationService {
 
   /// Schedules a single notification at an absolute local [when].
   ///
+  /// [locationTzId] is the IANA timezone of the **selected location** (e.g.
+  /// `"America/New_York"` or `"Europe/London"`), NOT the device timezone.
+  /// Prayer times must fire in the selected location's timezone regardless of
+  /// where the physical device is located. When null, falls back to device tz.
+  ///
   /// [exact] selects exact vs. inexact alarm scheduling on Android. On iOS the
   /// OS always treats these as best-effort local notifications.
   /// [useAdhanChannel] routes to the adhan sound channel when true.
@@ -27,10 +32,17 @@ abstract class NotificationService {
     required String title,
     required String body,
     required DateTime when,
+    String? locationTzId,
     String? payload,
     bool exact = true,
     bool useAdhanChannel = false,
   });
+
+  /// Cancels a set of notification IDs (scoped cancel — preferred over [cancelAll]).
+  ///
+  /// Use this to cancel only prayer schedule IDs so unrelated notifications
+  /// (test notification, future reminder categories) are not accidentally removed.
+  Future<void> cancelIds(Iterable<int> ids);
 
   /// Cancels every scheduled notification.
   Future<void> cancelAll();
@@ -99,12 +111,11 @@ class FlutterLocalNotificationService implements NotificationService {
   Future<void> init() async {
     if (_initialized) return;
 
+    // Initialise the timezone database. tz.local is used ONLY as the device
+    // timezone for the "is this instant already past?" guard in scheduleAt.
+    // Actual prayer notification instants use the selected-location IANA id
+    // supplied per call via the locationTzId parameter — never tz.local.
     tzdata.initializeTimeZones();
-    try {
-      tz.setLocalLocation(tz.getLocation(tz.local.name));
-    } catch (_) {
-      tz.setLocalLocation(tz.getLocation('Europe/Istanbul'));
-    }
 
     const androidInit = AndroidInitializationSettings('@mipmap/ic_launcher');
     const darwinInit = DarwinInitializationSettings(
@@ -167,18 +178,50 @@ class FlutterLocalNotificationService implements NotificationService {
     return false;
   }
 
+  // ── Private helpers ──────────────────────────────────────────────────────
+
+  /// Resolves an IANA timezone id to a [tz.Location].
+  ///
+  /// Falls back to [tz.local] (the device timezone) when [tzId] is null or
+  /// unrecognised.  Always falls back rather than throwing so a mis-configured
+  /// tzId does not crash the scheduler.
+  tz.Location _resolveLocation(String? tzId) {
+    if (tzId == null || tzId.isEmpty) return tz.local;
+    try {
+      return tz.getLocation(tzId);
+    } catch (_) {
+      return tz.local;
+    }
+  }
+
   @override
   Future<void> scheduleAt({
     required int id,
     required String title,
     required String body,
     required DateTime when,
+    String? locationTzId,
     String? payload,
     bool exact = true,
     bool useAdhanChannel = false,
   }) async {
-    final tzWhen = tz.TZDateTime.from(when, tz.local);
-    if (tzWhen.isBefore(tz.TZDateTime.now(tz.local))) return;
+    // Resolve the selected-location's timezone (NOT the device tz).
+    // Prayer times are computed as wall-clock DateTimes for the selected
+    // location, so we reconstruct a TZDateTime with the same y/m/d/h/min/s
+    // components interpreted in that location — this is the only correct way
+    // to ensure the alarm fires at the right local clock time regardless of
+    // where the physical device is currently located.
+    final loc = _resolveLocation(locationTzId);
+    final tzWhen = tz.TZDateTime(
+      loc,
+      when.year,
+      when.month,
+      when.day,
+      when.hour,
+      when.minute,
+      when.second,
+    );
+    if (tzWhen.isBefore(tz.TZDateTime.now(loc))) return;
 
     final AndroidNotificationDetails androidDetails;
     final DarwinNotificationDetails darwinDetails;
@@ -236,6 +279,13 @@ class FlutterLocalNotificationService implements NotificationService {
           UILocalNotificationDateInterpretation.absoluteTime,
       payload: payload,
     );
+  }
+
+  @override
+  Future<void> cancelIds(Iterable<int> ids) async {
+    for (final id in ids) {
+      await _plugin.cancel(id);
+    }
   }
 
   @override

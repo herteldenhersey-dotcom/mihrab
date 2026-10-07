@@ -19,18 +19,39 @@
     <!--
       Exact alarms for minute-accurate prayer notifications.
 
-      * SCHEDULE_EXACT_ALARM (Android 12/13): user-revocable; we check
-        canScheduleExactNotifications() at runtime and fall back to inexact
-        scheduling (AndroidScheduleMode.inexactAllowWhileIdle) when denied.
-      * USE_EXACT_ALARM (Android 13+): auto-granted, but Google Play restricts
-        it to apps whose CORE function is alarms/reminders/calendar. A prayer
-        times app qualifies (time-critical religious reminders); if Play review
-        objects, remove USE_EXACT_ALARM and rely on the SCHEDULE_EXACT_ALARM +
-        inexact fallback path already implemented in
-        AndroidPrayerNotificationScheduler.
+      POLICY DECISION (Phase 5.1 — reviewed):
+
+      * USE_EXACT_ALARM (Android 13+, API 33+) is auto-granted but Google Play
+        restricts it to alarm-clock and calendar apps. MİHRAB is a prayer-times
+        app, NOT a general alarm clock. Including USE_EXACT_ALARM creates a
+        real risk of Play Store rejection or policy enforcement. It is therefore
+        REMOVED from this manifest.
+
+      * SCHEDULE_EXACT_ALARM (Android 12+, API 31+) is appropriate for apps
+        whose functionality depends on exact timing (prayer alerts are
+        time-critical). It is user-revocable on Android 14+; the runtime check
+        AlarmPermissionService.canScheduleExactAlarms() drives the exact/inexact
+        scheduling decision in AndroidPrayerNotificationScheduler. When the user
+        denies or revokes this permission the app automatically falls back to
+        inexact alarms (AndroidScheduleMode.inexactAllowWhileIdle) — prayers
+        still fire, but potentially a few minutes late.
+
+      RELEASE PREREQUISITE: Before submitting to Play Store, verify that
+      SCHEDULE_EXACT_ALARM usage is accepted under the current Play policy for
+      prayer/religious apps. If rejected, remove SCHEDULE_EXACT_ALARM and rely
+      solely on the inexact fallback already implemented. Inexact scheduling is
+      sufficient for most devices and avoids any policy risk.
+
+      ANDROID VERSION BEHAVIOUR:
+      * < Android 12 (API < 31): exact alarms are always available; this
+        permission declaration is ignored.
+      * Android 12–13 (API 31–32): SCHEDULE_EXACT_ALARM is granted by default
+        but user-revocable via Settings → Special app access.
+      * Android 14+ (API 34+): NOT granted by default; user must explicitly
+        grant it. canScheduleExactAlarms() returns false until granted.
+      * All versions: fallback to inexact alarms is in place and tested.
     -->
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
 
     <!-- ==================== Hardware features (optional) ==================== -->
     <!-- Compass for qibla; GPS for location. Marked not-required so the app

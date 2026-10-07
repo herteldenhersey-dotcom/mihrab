@@ -79,3 +79,39 @@ changed to PASS/FAIL after it has actually been exercised on a physical device
 ### Test & Silent Mode
 - ☐ NOT TESTED — Test notification fires a few seconds after being triggered
 - ☐ NOT TESTED — Silent-mode / Focus behavior observed (timeSensitive requested; delivery OS/user-controlled)
+
+---
+
+## Phase 5.1 Güncellemesi — Gerçek Cihaz Test Notları
+
+**Tarih:** 2026-10-07
+
+### Timezone Doğruluğu — Kritik Test
+Phase 5.1'in en önemli değişikliği timezone doğruluğudur. Gerçek cihazda test edilmesi GEREKİR:
+
+**Senaryo:**
+1. Uygulamada konum olarak **İstanbul** seç (Europe/Istanbul)
+2. Cihazı **farklı bir timezone'a** al (örn. UTC, London, New York)
+3. Namaz vakti bildiriminin **İstanbul wall-clock saatinde** çalıp çalmadığını kontrol et
+4. Beklenen: Bildirim İstanbul saatiyle çalar, cihaz timezone'uyla değil
+
+**Phase 5 öncesinde bu test başarısız olurdu** — bildirim cihaz timezone'unda çalırdı.  
+**Phase 5.1 sonrasında** `tz.TZDateTime(Europe/Istanbul, y, m, d, h, min, s)` kullanıldığı için doğru saatte çalmalıdır.
+
+### Scoped Cancel Doğrulaması
+1. Ayarlar → Test Bildirimi gönder (ID=0)
+2. Hemen akabinde Bildirim Ayarlarını kaydet (yeniden planlama tetiklenir)
+3. Test bildiriminin **silinmediğini** ve 5 saniye içinde çaldığını doğrula
+4. Phase 5.1 öncesinde `cancelAll()` test bildirimini de siliyordu
+
+### iOS adhan_placeholder.wav Kontrolü
+- `adhan_placeholder.wav` artık `ios/Runner.xcodeproj/project.pbxproj`'a eklendi
+- iOS build'de ses dosyasının bundle'a dahil edildiğini doğrula:
+  ```
+  Xcode → Runner → Build Phases → Copy Bundle Resources → adhan_placeholder.wav ✓
+  ```
+- Ezan bildirimi çaldığında özel sesin sistem varsayılanı yerine kullanıldığını test et
+
+### Hatırlatma
+- iOS tam uzunlukta ezan: **MÜMKÜN DEĞİL** (30 saniyelik limit). Belgelendi.
+- Android kanal ses değiştirme: **MÜMKÜN DEĞİL** (kanal bir kez oluşturulunca). Belgelendi.

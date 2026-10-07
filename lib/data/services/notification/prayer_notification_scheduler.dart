@@ -29,9 +29,15 @@ abstract class PrayerNotificationScheduler {
   /// [enabledPrayers] is a legacy override kept for backward-compatibility.
   /// If both [notificationSettings] and [enabledPrayers] are supplied,
   /// [notificationSettings] takes precedence.
+  ///
+  /// [locationTzId] is the IANA timezone of the selected location (e.g.
+  /// `"Europe/Istanbul"`).  Passed through to [NotificationService.scheduleAt]
+  /// so notifications fire at the correct wall-clock time in the selected
+  /// city regardless of where the physical device is located.
   Future<void> scheduleWeek({
     required List<DailyPrayerTimes> days,
     required PrayerNotificationCopy copy,
+    String? locationTzId,
     NotificationSettings? notificationSettings,
     Set<PrayerType>? enabledPrayers,
   });
@@ -83,5 +89,21 @@ mixin PrayerSchedulerIdMixin {
   bool useAdhanChannel(PrayerType prayer, PrayerNotificationConfig config) {
     if (!prayer.isObligatory) return false;
     return config.adhanEnabled;
+  }
+
+  /// Returns ALL notification IDs that could be scheduled in a 7-day window.
+  ///
+  /// Used for SCOPED cancellation — cancels only the prayer schedule IDs so
+  /// unrelated notifications (test notification, future reminder categories)
+  /// are NOT accidentally removed.
+  ///
+  /// Formula: [PrayerConstants.notificationIdBase] + dayIndex × 10 + prayer.index
+  /// Range: base + 0 .. base + scheduleWindowDays×10 - 1 (no collision with
+  ///        [PrayerConstants.testNotificationId] which is always 0).
+  List<int> allScheduleIds() {
+    return [
+      for (var d = 0; d < PrayerConstants.scheduleWindowDays; d++)
+        for (final p in PrayerType.values) notificationId(d, p),
+    ];
   }
 }
